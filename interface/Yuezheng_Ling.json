@@ -1,0 +1,41 @@
+{
+  "code":"4",
+  "musics": [
+    {
+      "id":"YZL00",
+      "title":"残月雪",
+      "role" : "乐正绫",
+      "type" : "mpeg",
+      "icon":"src/image/icon/残月雪.jpg",
+      "url":"dataset/music/Yuezheng_Ling/残月雪.mp3",
+      "lyrics": "dataset/lyrics/残月雪.json"
+    },
+    {
+      "id":"YZL01",
+      "title":"六重不忠",
+      "role" : "乐正绫",
+      "type" : "mpeg",
+      "icon":"src/image/icon/六重不忠.jpg",
+      "url":"dataset/music/Yuezheng_Ling/六重不忠.mp3",
+      "lyrics": "dataset/lyrics/六重不忠.json"
+    },
+    {
+      "id":"YZL02",
+      "title":"四重罪孽",
+      "role" : "乐正绫",
+      "type" : "mpeg",
+      "icon":"src/image/icon/四重罪孽.jpg",
+      "url":"dataset/music/Yuezheng_Ling/四重罪孽.mp3",
+      "lyrics": "dataset/lyrics/四重罪孽.json"
+    },
+    {
+      "id":"YZL03",
+      "title":"五重空洞",
+      "role" : "乐正绫",
+      "type" : "mpeg",
+      "icon":"src/image/icon/五重空洞.jpg",
+      "url":"dataset/music/Yuezheng_Ling/五重空洞.mp3",
+      "lyrics": "dataset/lyrics/五重空洞.json"
+    }
+  ]
+}

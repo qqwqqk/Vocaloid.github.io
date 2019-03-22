@@ -1,0 +1,59 @@
+{
+  "code":"6",
+  "musics": [
+    {
+      "id":"LTY00",
+      "title":"66CCFF",
+      "role" : "洛天依",
+      "type" : "mpeg",
+      "icon":"src/image/icon/66CCFF.jpg",
+      "url":"dataset/music/Luo_Tianyi/66CCFF.mp3",
+      "lyrics": "dataset/lyrics/66CCFF.json"
+    },
+    {
+      "id":"LTY01",
+      "title":"洛阳怀",
+      "role" : "洛天依",
+      "type" : "mpeg",
+      "icon":"src/image/icon/洛阳怀.jpg",
+      "url":"dataset/music/Luo_Tianyi/洛阳怀.mp3",
+      "lyrics": "dataset/lyrics/洛阳怀.json"
+    },
+    {
+      "id":"LTY02",
+      "title":"眉间不点砂",
+      "role" : "洛天依",
+      "type" : "mpeg",
+      "icon":"src/image/icon/眉间不点砂.jpg",
+      "url":"dataset/music/Luo_Tianyi/眉间不点砂.mp3",
+      "lyrics": "dataset/lyrics/眉间不点砂.json"
+    },
+    {
+      "id":"LTY03",
+      "title":"霜雪千年",
+      "role" : "洛天依",
+      "type" : "mpeg",
+      "icon":"src/image/icon/霜雪千年.jpg",
+      "url":"dataset/music/Luo_Tianyi/霜雪千年.mp3",
+      "lyrics": "dataset/lyrics/霜雪千年.json"
+    },
+    {
+      "id":"LTY04",
+      "title":"新·九九八十一",
+      "role" : "洛天依",
+      "type" : "mpeg",
+      "icon":"src/image/icon/新·九九八十一.jpg",
+      "url":"dataset/music/Luo_Tianyi/新·九九八十一.mp3",
+      "lyrics": "dataset/lyrics/新·九九八十一.json"
+    },
+    {
+      "id":"LTY05",
+      "title":"易水诀",
+      "role" : "洛天依",
+      "type" : "mpeg",
+      "icon":"src/image/icon/易水诀.jpg",
+      "url":"dataset/music/Luo_Tianyi/易水诀.mp3",
+      "lyrics": "dataset/lyrics/易水诀.json"
+    }
+  ]
+}

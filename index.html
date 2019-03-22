@@ -1,10 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <title>音乐播放器</title>
+    <script src="src/script/main.js" type="text/javascript"></script>
+    <link href="src/style/index.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="src/image/icon/_title.ico" type="img/x-ico" />
 </head>
 <body>
-<h1>ECASCript 6 test </h1>
+<header id="header_css"></header>
+<div id="content_css">
+    <div id="show_windows">
+        <!--音频信息框体-->
+        <div id="music_info">
+            <div id="music_header">
+                <audio id="music" src=""></audio>
+
+                <!--图标、名称控件-->
+                <div id="music_icon"> <img src=""> </div>
+                <div id="music_title"> <input placeholder="Loading..." readonly> </div>
+
+                <!--播放进度的展示与控制-->
+                <div id="music_progress"> </div>
+                <div id="music_progress_time"> <label id="music_progress_time_show">Loading...</label> </div>
+            </div>
+        </div>
+
+        <!--歌词展示框体-->
+        <div id="lyrics_info">
+            <img id="show_img" src="">
+        </div>
+    </div>
+
+    <div id="list_windows">
+        <!--歌手信息框体-->
+        <div id="role_info">
+            <div id="role_header">
+                <!--图标、名称及相关播放控件-->
+                <div id="role_icon"> <img src=""> </div>
+                <div id="role_name"> <input placeholder="Loading..." readonly> </div>
+                <div id="play_control"></div>
+                <div id="volume_progress"></div>
+                <div id ="volume_value"></div>
+            </div>
+        </div>
+
+        <!--曲目展示框体-->
+        <div id="list_show">
+            <input type="button" class="list_music" value="Loading..." readonly>
+            <input type="button" class="list_music" value="Loading..." readonly>
+        </div>
+    </div>
+</div>
+<footer id="footer_css"></footer>
 </body>
 </html>
