@@ -1,6 +1,7 @@
 window.onload = function(){
     loadControl();
-    loadRole('乐正绫');
+    //confirm('loading...');
+    loadRole('洛天依');
 }
 
 function loadControl(){
@@ -89,6 +90,7 @@ function loadRole( name = '洛天依'){
         .then(function(data) {
             let roles = data.role;
             for(let role of roles){
+                loadImageAsync(role.icon);     //图片预加载异步操作
                 if(role.name === name){
                     //console.log(role);       //打印指定歌手信息
                     let newIcon = document.createElement('img');        //创建并添加图标块作用域
@@ -113,6 +115,15 @@ function loadRole( name = '洛天依'){
         .catch(error => console.log(error))    //打印错误信息
 }
 
+function loadImageAsync(url) {
+    return new Promise(function(resolve, reject) {
+        const image = new Image();
+        image.onload = () => resolve(image);
+        image.onerror = () => reject(new Error('Could not load image at ' + url));
+        image.src = url;
+    });
+}
+
 function loadList(musicUrl = 'Luo_Tianyi.json', musicColor, musicBorder){
     let oldMusicLists = document.getElementById('list_show');
     let newMusicLists = document.createElement('div');
@@ -123,6 +134,7 @@ function loadList(musicUrl = 'Luo_Tianyi.json', musicColor, musicBorder){
         .then(function(data){
             let musics = data.musics;
             for(let music of musics){
+                loadImageAsync(music.icon);     //图片预加载异步操作
                 //console.log(music);
                 if(typeof(defaultMusic) === 'undefined'){ defaultMusic = music.url; defaultIcon = music.icon; defaultName = music.title; }
 
