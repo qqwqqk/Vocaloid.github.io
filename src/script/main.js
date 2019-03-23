@@ -1,3 +1,5 @@
+import {clickedPlay, clickPremusic, clickNextmusic, clickLoop, clickVolume, clickVolumeadjust, clickProgressadjust } from './playcontrol.js'
+
 window.onload = function(){
     loadControl();
     //confirm('loading...');
@@ -14,7 +16,7 @@ function loadControl(){
             newButton.className = 'btn_css';
             newButton.type = 'button';
             newButton.style.backgroundImage = 'url(src/image/resource/'+ key +'.png)';
-            newButton.addEventListener('click',() => clickTest(key));
+            newButton.addEventListener('click',() => controlClick(key));
             if(value === 1){ newButton.style.display = 'block'; }else{ newButton.style.display = 'none'; }
             controls.appendChild(newButton);
         });
@@ -79,6 +81,30 @@ function loadControl(){
     }//创建并添加播放进度调节控件
 }
 
+function controlClick(key){
+    switch (key){
+        case 'prefile':
+            console.log('上一曲');
+            clickPremusic();
+            break;
+        case 'play':
+            console.log('播放');
+            clickedPlay();
+            break;
+        case 'nextfile':
+            console.log('下一曲');
+            clickNextmusic();
+            break;
+        case 'single':
+            console.log('循环');
+            clickLoop();
+            break;
+        default:
+            console.log('error');
+            break;
+    }
+}
+
 function clickTest(str){
     console.log(str);
 }
@@ -122,7 +148,7 @@ function loadImageAsync(url) {
         image.onerror = () => reject(new Error('Could not load image at ' + url));
         image.src = url;
     });
-}
+}   //图片预加载
 
 function loadList(musicUrl = 'Luo_Tianyi.json', musicColor, musicBorder){
     let oldMusicLists = document.getElementById('list_show');

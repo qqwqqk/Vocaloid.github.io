@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd59d6e9-64d5-44c3-9a36-8570a41d6269" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/typescript-compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/script/lib.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/script/playcontrol.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/script/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/script/main.js" afterDir="false" />
     </list>
@@ -20,8 +24,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="6" column="70" lean-forward="true" selection-start-line="6" selection-start-column="70" selection-end-line="6" selection-end-column="70" />
+            <state relative-caret-position="88">
+              <caret line="4" column="24" lean-forward="true" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
               <folding>
                 <element signature="n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
               </folding>
@@ -29,11 +33,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Yuezheng_Ling.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/interface/Yuezheng_Ling.json">
+      <file leaf-file-name="lib.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/script/lib.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="552">
-              <caret line="39" column="3" selection-start-line="39" selection-start-column="3" selection-end-line="39" selection-end-column="3" />
+            <state relative-caret-position="66">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="playcontrol.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/script/playcontrol.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="596">
+              <caret line="28" column="117" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="117" />
             </state>
           </provider>
         </entry>
@@ -41,11 +54,14 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/script/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
+            <state relative-caret-position="858">
+              <caret line="97" column="22" lean-forward="true" selection-start-line="97" selection-start-column="22" selection-end-line="97" selection-end-column="22" />
               <folding>
-                <element signature="n#!!block;n#loadControl#0" />
+                <element signature="e#910#2341#0" />
+                <element signature="e#2359#2631#0" />
+                <element signature="e#2646#3597#0" />
                 <element signature="n#!!block;n#clickTest#0" />
+                <element signature="n#!!block;n#loadRole#0" />
                 <element signature="n#!!block;n#loadImageAsync#0" />
                 <element signature="n#!!block;n#loadList#0" />
                 <element signature="n#!!block;n#clickList#0" />
@@ -56,23 +72,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/style/index.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="726">
-              <caret line="33" column="81" selection-start-line="33" selection-start-column="81" selection-end-line="33" selection-end-column="81" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="TypeScript File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -86,6 +94,10 @@
         <option value="$PROJECT_DIR$/interface/role.json" />
         <option value="$PROJECT_DIR$/src/style/index.css" />
         <option value="$PROJECT_DIR$/interface/Yuezheng_Ling.json" />
+        <option value="$PROJECT_DIR$/src/script/playcontrol.js" />
+        <option value="$PROJECT_DIR$/src/script/module.ts" />
+        <option value="$PROJECT_DIR$/src/script/module.js" />
+        <option value="$PROJECT_DIR$/src/script/lib.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/src/script/main.js" />
       </list>
@@ -100,7 +112,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="541" />
     <option name="y" value="4" />
     <option name="width" value="830" />
@@ -130,11 +142,6 @@
             <path>
               <item name="ECASCript.github.io" type="b2602c69:ProjectViewProjectNode" />
               <item name="ECASCript.github.io" type="462c0819:PsiDirectoryNode" />
-              <item name="interface" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ECASCript.github.io" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ECASCript.github.io" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -142,13 +149,6 @@
               <item name="ECASCript.github.io" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="image" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ECASCript.github.io" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ECASCript.github.io" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="image" type="462c0819:PsiDirectoryNode" />
-              <item name="icon" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ECASCript.github.io" type="b2602c69:ProjectViewProjectNode" />
@@ -156,6 +156,12 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="image" type="462c0819:PsiDirectoryNode" />
               <item name="resource" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ECASCript.github.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ECASCript.github.io" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="script" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -170,6 +176,7 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="ts.external.directory.path" value="D:\PhpStorm\PhpStorm 2018.1.6\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -197,27 +204,29 @@
       <workItem from="1553061374849" duration="20108000" />
       <workItem from="1553130121385" duration="20585000" />
       <workItem from="1553215524518" duration="25702000" />
-      <workItem from="1553318698722" duration="4952000" />
+      <workItem from="1553318698722" duration="14441000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76739000" />
+    <option name="totallyTimeSpent" value="86228000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1394" height="916" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49871466" visible="true" weight="0.21664168" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info id="Structure" order="1" sideWeight="0.5012854" side_tool="true" weight="0.11694153" />
       <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="TypeScript" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49871466" visible="true" weight="0.21664168" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32904884" />
+      <window_info id="Structure" order="1" sideWeight="0.5012854" side_tool="true" weight="0.11694153" />
       <window_info id="Favorites" order="2" sideWeight="0.5012854" side_tool="true" weight="0.11694153" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -226,11 +235,15 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/src/script/module.js" />
+      </list>
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -258,8 +271,11 @@
         <state relative-caret-position="44">
           <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
           <folding>
-            <element signature="n#!!block;n#loadControl#0" />
+            <element signature="e#910#2341#0" />
+            <element signature="e#2359#2631#0" />
+            <element signature="e#2646#3597#0" />
             <element signature="n#!!block;n#clickTest#0" />
+            <element signature="n#!!block;n#loadRole#0" />
             <element signature="n#!!block;n#loadImageAsync#0" />
             <element signature="n#!!block;n#loadList#0" />
             <element signature="n#!!block;n#clickList#0" />
@@ -319,8 +335,11 @@
         <state relative-caret-position="1122">
           <caret line="51" column="33" lean-forward="true" selection-start-line="51" selection-start-column="33" selection-end-line="51" selection-end-column="33" />
           <folding>
-            <element signature="n#!!block;n#loadControl#0" />
+            <element signature="e#910#2341#0" />
+            <element signature="e#2359#2631#0" />
+            <element signature="e#2646#3597#0" />
             <element signature="n#!!block;n#clickTest#0" />
+            <element signature="n#!!block;n#loadRole#0" />
             <element signature="n#!!block;n#loadImageAsync#0" />
             <element signature="n#!!block;n#loadList#0" />
             <element signature="n#!!block;n#clickList#0" />
@@ -392,34 +411,61 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/interface/Yuezheng_Ling.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="18" column="51" lean-forward="true" selection-start-line="18" selection-start-column="51" selection-end-line="18" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/style/index.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="33" column="81" selection-start-line="33" selection-start-column="81" selection-end-line="33" selection-end-column="81" />
+        <state relative-caret-position="132">
+          <caret line="6" column="83" selection-start-line="6" selection-start-column="83" selection-end-line="6" selection-end-column="83" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/interface/Luo_Tianyi.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="6" lean-forward="true" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="19" />
+        <state relative-caret-position="-592">
+          <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/interface/Yuezheng_Ling.json">
+    <entry file="file://$PROJECT_DIR$/src/script/module.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="39" column="3" selection-start-line="39" selection-start-column="3" selection-end-line="39" selection-end-column="3" />
+        <state relative-caret-position="242">
+          <caret line="11" column="23" lean-forward="true" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/script/module.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/script/lib.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/script/playcontrol.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="596">
+          <caret line="28" column="117" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="117" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/script/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
+        <state relative-caret-position="858">
+          <caret line="97" column="22" lean-forward="true" selection-start-line="97" selection-start-column="22" selection-end-line="97" selection-end-column="22" />
           <folding>
-            <element signature="n#!!block;n#loadControl#0" />
+            <element signature="e#910#2341#0" />
+            <element signature="e#2359#2631#0" />
+            <element signature="e#2646#3597#0" />
             <element signature="n#!!block;n#clickTest#0" />
+            <element signature="n#!!block;n#loadRole#0" />
             <element signature="n#!!block;n#loadImageAsync#0" />
             <element signature="n#!!block;n#loadList#0" />
             <element signature="n#!!block;n#clickList#0" />
@@ -431,8 +477,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="70" lean-forward="true" selection-start-line="6" selection-start-column="70" selection-end-line="6" selection-end-column="70" />
+        <state relative-caret-position="88">
+          <caret line="4" column="24" lean-forward="true" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
           <folding>
             <element signature="n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
           </folding>
