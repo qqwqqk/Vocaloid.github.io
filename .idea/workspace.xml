@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd59d6e9-64d5-44c3-9a36-8570a41d6269" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/typescript-compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/script/lib.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/script/playcontrol.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/script/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/script/main.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,8 +20,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="4" column="24" lean-forward="true" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+            <state relative-caret-position="132">
+              <caret line="6" column="60" lean-forward="true" selection-start-line="6" selection-start-column="60" selection-end-line="6" selection-end-column="60" />
               <folding>
                 <element signature="n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
               </folding>
@@ -33,20 +29,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lib.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/script/lib.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="playcontrol.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/script/playcontrol.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="596">
-              <caret line="28" column="117" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="117" />
+            <state relative-caret-position="176">
+              <caret line="8" column="26" lean-forward="true" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -54,16 +41,18 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/script/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="858">
-              <caret line="97" column="22" lean-forward="true" selection-start-line="97" selection-start-column="22" selection-end-line="97" selection-end-column="22" />
+            <state relative-caret-position="352">
+              <caret line="164" column="48" selection-start-line="164" selection-start-column="48" selection-end-line="164" selection-end-column="48" />
               <folding>
-                <element signature="e#910#2341#0" />
-                <element signature="e#2359#2631#0" />
-                <element signature="e#2646#3597#0" />
+                <element signature="n#!!block;n#loadControl#0" />
+                <element signature="e#270#1066#0" />
+                <element signature="e#1084#2515#0" />
+                <element signature="e#2533#2805#0" />
+                <element signature="e#2820#3771#0" />
+                <element signature="n#!!block;n#controlClick#0" />
                 <element signature="n#!!block;n#clickTest#0" />
                 <element signature="n#!!block;n#loadRole#0" />
                 <element signature="n#!!block;n#loadImageAsync#0" />
-                <element signature="n#!!block;n#loadList#0" />
                 <element signature="n#!!block;n#clickList#0" />
                 <element signature="n#!!block;n#loadMusic#0" />
                 <element signature="n#!!block;n#loadLyrics#0" />
@@ -112,7 +101,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="541" />
     <option name="y" value="4" />
     <option name="width" value="830" />
@@ -126,7 +115,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -167,6 +155,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -205,11 +194,12 @@
       <workItem from="1553130121385" duration="20585000" />
       <workItem from="1553215524518" duration="25702000" />
       <workItem from="1553318698722" duration="14441000" />
+      <workItem from="1553399449048" duration="3275000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86228000" />
+    <option name="totallyTimeSpent" value="89503000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1394" height="916" extended-state="6" />
@@ -221,11 +211,10 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="TypeScript" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49871466" visible="true" weight="0.21664168" />
+      <window_info anchor="bottom" id="TypeScript" order="8" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49871466" visible="true" weight="0.21964018" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32904884" />
       <window_info id="Structure" order="1" sideWeight="0.5012854" side_tool="true" weight="0.11694153" />
       <window_info id="Favorites" order="2" sideWeight="0.5012854" side_tool="true" weight="0.11694153" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
@@ -235,20 +224,59 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32904884" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-    <option name="exactExcludedFiles">
-      <list>
-        <option value="$PROJECT_DIR$/src/script/module.js" />
-      </list>
-    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="24" lean-forward="true" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+          <folding>
+            <element signature="n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/script/playcontrol.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="28" column="117" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="117" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/script/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2134">
+          <caret line="97" column="22" lean-forward="true" selection-start-line="97" selection-start-column="22" selection-end-line="97" selection-end-column="22" />
+          <folding>
+            <element signature="n#!!block;n#loadControl#0" />
+            <element signature="e#270#1066#0" />
+            <element signature="e#1084#2515#0" />
+            <element signature="e#2533#2805#0" />
+            <element signature="e#2820#3771#0" />
+            <element signature="n#!!block;n#controlClick#0" />
+            <element signature="n#!!block;n#clickTest#0" />
+            <element signature="n#!!block;n#loadRole#0" />
+            <element signature="n#!!block;n#loadImageAsync#0" />
+            <element signature="n#!!block;n#clickList#0" />
+            <element signature="n#!!block;n#loadMusic#0" />
+            <element signature="n#!!block;n#loadLyrics#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
@@ -271,13 +299,15 @@
         <state relative-caret-position="44">
           <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
           <folding>
-            <element signature="e#910#2341#0" />
-            <element signature="e#2359#2631#0" />
-            <element signature="e#2646#3597#0" />
+            <element signature="n#!!block;n#loadControl#0" />
+            <element signature="e#270#1066#0" />
+            <element signature="e#1084#2515#0" />
+            <element signature="e#2533#2805#0" />
+            <element signature="e#2820#3771#0" />
+            <element signature="n#!!block;n#controlClick#0" />
             <element signature="n#!!block;n#clickTest#0" />
             <element signature="n#!!block;n#loadRole#0" />
             <element signature="n#!!block;n#loadImageAsync#0" />
-            <element signature="n#!!block;n#loadList#0" />
             <element signature="n#!!block;n#clickList#0" />
             <element signature="n#!!block;n#loadMusic#0" />
             <element signature="n#!!block;n#loadLyrics#0" />
@@ -335,13 +365,15 @@
         <state relative-caret-position="1122">
           <caret line="51" column="33" lean-forward="true" selection-start-line="51" selection-start-column="33" selection-end-line="51" selection-end-column="33" />
           <folding>
-            <element signature="e#910#2341#0" />
-            <element signature="e#2359#2631#0" />
-            <element signature="e#2646#3597#0" />
+            <element signature="n#!!block;n#loadControl#0" />
+            <element signature="e#270#1066#0" />
+            <element signature="e#1084#2515#0" />
+            <element signature="e#2533#2805#0" />
+            <element signature="e#2820#3771#0" />
+            <element signature="n#!!block;n#controlClick#0" />
             <element signature="n#!!block;n#clickTest#0" />
             <element signature="n#!!block;n#loadRole#0" />
             <element signature="n#!!block;n#loadImageAsync#0" />
-            <element signature="n#!!block;n#loadList#0" />
             <element signature="n#!!block;n#clickList#0" />
             <element signature="n#!!block;n#loadMusic#0" />
             <element signature="n#!!block;n#loadLyrics#0" />
@@ -432,42 +464,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/script/module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="23" lean-forward="true" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/script/module.ts">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/script/lib.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/script/module.js" />
+    <entry file="file://$PROJECT_DIR$/src/script/module.ts" />
+    <entry file="file://$PROJECT_DIR$/src/script/lib.js" />
     <entry file="file://$PROJECT_DIR$/src/script/playcontrol.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="596">
-          <caret line="28" column="117" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="117" />
+        <state relative-caret-position="176">
+          <caret line="8" column="26" lean-forward="true" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/script/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="858">
-          <caret line="97" column="22" lean-forward="true" selection-start-line="97" selection-start-column="22" selection-end-line="97" selection-end-column="22" />
+        <state relative-caret-position="352">
+          <caret line="164" column="48" selection-start-line="164" selection-start-column="48" selection-end-line="164" selection-end-column="48" />
           <folding>
-            <element signature="e#910#2341#0" />
-            <element signature="e#2359#2631#0" />
-            <element signature="e#2646#3597#0" />
+            <element signature="n#!!block;n#loadControl#0" />
+            <element signature="e#270#1066#0" />
+            <element signature="e#1084#2515#0" />
+            <element signature="e#2533#2805#0" />
+            <element signature="e#2820#3771#0" />
+            <element signature="n#!!block;n#controlClick#0" />
             <element signature="n#!!block;n#clickTest#0" />
             <element signature="n#!!block;n#loadRole#0" />
             <element signature="n#!!block;n#loadImageAsync#0" />
-            <element signature="n#!!block;n#loadList#0" />
             <element signature="n#!!block;n#clickList#0" />
             <element signature="n#!!block;n#loadMusic#0" />
             <element signature="n#!!block;n#loadLyrics#0" />
@@ -477,8 +497,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="24" lean-forward="true" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+        <state relative-caret-position="132">
+          <caret line="6" column="60" lean-forward="true" selection-start-line="6" selection-start-column="60" selection-end-line="6" selection-end-column="60" />
           <folding>
             <element signature="n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
           </folding>
