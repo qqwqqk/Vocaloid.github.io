@@ -2,7 +2,6 @@
   "code":"4",
   "musics": [
     {
-      "id":"YZL00",
       "title":"残月雪",
       "role" : "乐正绫",
       "type" : "mpeg",
@@ -11,7 +10,6 @@
       "lyrics": "dataset/lyrics/残月雪.json"
     },
     {
-      "id":"YZL01",
       "title":"六重不忠",
       "role" : "乐正绫",
       "type" : "mpeg",
@@ -20,7 +18,6 @@
       "lyrics": "dataset/lyrics/六重不忠.json"
     },
     {
-      "id":"YZL02",
       "title":"四重罪孽",
       "role" : "乐正绫",
       "type" : "mpeg",
@@ -29,7 +26,6 @@
       "lyrics": "dataset/lyrics/四重罪孽.json"
     },
     {
-      "id":"YZL03",
       "title":"五重空洞",
       "role" : "乐正绫",
       "type" : "mpeg",
