@@ -1,30 +1,30 @@
-import { playStatus, loopStatus, progressUp, progressPause, clickedPlay, clickPremusic, clickNextmusic, clickLoop, clickVolume, clickVolumeadjust, clickProgressadjust } from './playcontrol.js'
+import { playStatus, volumeStatus, loopStatus, clickedPlay, clickPremusic, clickNextmusic, clickLoop, clickVolume, clickVolumeadjust, clickProgressadjust } from './playcontrol.js'
 
 window.onload = function(){
     loadControl();
     //confirm('loading...');
     loadRole('洛天依');
-}
+};
 
 function clickTest(str){
     console.log(str);
 }             //测试函数
 
-function loadImageAsync(url) {
+function loadImageAsync(image, url) {
     return new Promise(function(resolve, reject) {
-        const image = new Image();
+        image.src = url;
         image.onload = () => resolve(image);
         image.onerror = () => reject(new Error('Could not load image at ' + url));
-        image.src = url;
+
     });
 }       //图片异步加载
 
-function loadAudioAsync(url) {
+function loadAudioAsync( audio, url) {
     return new Promise(function(resolve, reject) {
-        const audio = new Audio();
-        Audio.onload = () => resolve(audio);
-        Audio.onerror = () => reject(new Error('Could not load image at ' + url));
-        Audio.src = url;
+        //console.log('music loading...');
+        audio.onload = () => resolve(audio);
+        audio.onerror = () => reject(new Error('Could not load image at ' + url));
+        audio.src = url ;
     });
 }       //音频异步加载
 
@@ -34,32 +34,38 @@ function loadControl(){
         let controls = document.getElementById('play_control');
         buttons.forEach(function(value, key) {
             let imageUrl = 'src/image/resource/'+ key +'.png';
+            let newImage = Image;                       //图片预加载定义
             if(value === 1){
                 let newButton = document.createElement('img');
                 newButton.id = key;
                 newButton.className = 'btn_css';
-                loadImageAsync(imageUrl).then( newButton.src = imageUrl );      //图片异步加载
+                loadImageAsync(newButton,imageUrl);      //图片异步加载
                 newButton.addEventListener('click',() => controlClick(key));
                 controls.appendChild(newButton);
-            }else{ loadImageAsync(imageUrl); }                                  //图片预先加载
+            }else{
+                loadImageAsync(newImage, imageUrl).catch(()=>console.log('loading image' + newImage.src + 'failed'));
+            }
             //console.log('Key: %s, Value: %s', key, value);
         });
         {
             playStatus.next('init');      //播放按键状态初始化
+            volumeStatus.next('init');    //静音按键状态初始化
             loopStatus.next('init');      //循环按键状态初始化
         }//控制按键状态的初始化
     }//创建并添加播放控制按钮
 
     {
         let volumeProgress = document.getElementById('volume_progress');
-        loadImageAsync('src/image/resource/mute.png');                          //图片预加载_mute
+        let newImage = Image;
+        loadImageAsync( newImage, 'src/image/resource/mute.png').catch(()=>console.log('loading image' + newImage.src + 'failed'));
 
         let volumeButton = document.createElement('img');
         volumeButton.id = 'volume';
         volumeButton.className = 'volume_btn';
-        loadImageAsync('src/image/resource/volume.png')
-            .then( volumeButton.src = 'src/image/resource/volume.png' );        //图片异步加载_volume
-        volumeButton.addEventListener('click',() => clickTest('volume'));
+        loadImageAsync(volumeButton, 'src/image/resource/volume.png');          //图片预异步加载_volume
+            //.then(()=>console.log('loading image' + volumeButton.src + 'succeed'))
+            //.catch(()=>console.log('loading image' + volumeButton.src + 'failed'));
+        volumeButton.addEventListener('click',() => clickVolume());
         volumeProgress.appendChild(volumeButton);
 
         let volumeSite = document.createElement('div');
@@ -68,8 +74,7 @@ function loadControl(){
         volumePlay.id = 'volume_play';
         let volumeForm = document.createElement('img');
         volumeForm.id = 'volume_form';
-        loadImageAsync('src/image/resource/volume_progress.png')
-            .then( volumeForm.src = 'src/image/resource/volume_progress.png' ); //图片预异步加载_volumeProgress
+        loadImageAsync( volumeForm, 'src/image/resource/volume_progress.png');  //图片预异步加载_volumeProgress
         volumeForm.addEventListener('click',() => clickVolumeadjust(event));
         volumeSite.appendChild(volumePlay);
         volumeSite.appendChild(volumeForm);
@@ -94,8 +99,7 @@ function loadControl(){
         musicPlay.id = 'music_progress_play';
         let musicForm = document.createElement('img');
         musicForm.id = 'music_progress_form';
-        loadImageAsync('src/image/resource/progress.png')
-            .then( musicForm.src = 'src/image/resource/progress.png' ); //图片预异步加载_Progress
+        loadImageAsync( musicForm, 'src/image/resource/progress.png');  //图片预异步加载_Progress
         musicForm.addEventListener('click',() => clickProgressadjust(event));
         musicSite.appendChild(musicBuffer);
         musicSite.appendChild(musicPlay);
@@ -138,13 +142,16 @@ function loadRole( name = '洛天依'){
         .then(function(data) {
             let roles = data.role;
             for(let role of roles){
+                let newImage = Image;
                 if(role.name === name){
                     //console.log(role);       //打印指定歌手信息
                     let newIcon = document.createElement('img');                //创建并添加图标块作用域
                     newIcon.className = 'role_icon_show';
-                    loadImageAsync(role.icon).then( newIcon.src = role.icon );  //图片预加载异步操作
-                    let oldIcon = document.getElementById('role_icon');
-                    oldIcon.replaceChild(newIcon,oldIcon.children[0]);
+                    loadImageAsync( newIcon, role.icon).then( function () {     //图片预加载异步操作
+                        let oldIcon = document.getElementById('role_icon');
+                        oldIcon.replaceChild(newIcon,oldIcon.children[0]);
+                    })
+                        .catch(()=>console.log('loading image '+ role.icon +'failed'));
 
                     let newName = document.createElement('input');              //创建并添加姓名块作用域
                     newName.id = 'role_name_show';
@@ -159,7 +166,8 @@ function loadRole( name = '洛天依'){
                     document.getElementById('volume_play').style.backgroundColor = role.color;      //为音量调节控件设置背景色
 
                     loadList(role.musics, role.color, role.border);             //创建并添加列表块作用域
-                }else{ loadImageAsync(role.icon) }                              //图片预先加载
+                }
+                else{ loadImageAsync(newImage, role.icon).catch(()=>console.log('loading image' + newImage.src + 'failed')); }                              //图片预先加载
             }
         })
         .catch(error => console.log(error))    //打印错误信息
@@ -175,12 +183,13 @@ function loadList(musicUrl = 'Luo_Tianyi.json', musicColor, musicBorder){
         .then(function(data){
             let musics = data.musics;
             let listId = 0;
+            let newImage = Image;
             for(let music of musics){
                 //console.log(music);
                 listId += 1;
                 if(typeof(defaultMusic) === 'undefined'){ defaultMusic = music.url; defaultIcon = music.icon; defaultName = music.title; }
 
-                loadImageAsync(music.icon);     //图片预先加载
+                loadImageAsync(newImage, music.icon).catch(()=>console.log('loading image' + newImage.src + 'failed'));     //图片预先加载
                 //loadAudioAsync(music.url);      //音频异步加载
 
                 let newMusic = document.createElement('input');        //创建并添加音乐列表选项
@@ -212,24 +221,30 @@ function clickList(id, music, icon, name, color, border) {
     newStyle.style.border = '4px outset ' + border;
     //console.log('4px outset ' + border);
 
-    loadMusic(music, icon, name, color)
+    //document.getElementById('music').pause();
+    loadMusic(music, icon, name, color);
 }
 
 function loadMusic( music, icon, name, color){
     //console.log(music + icon + name + color);
-    let newMusic = document.createElement('audio');     //创建并添加音频块作用域
-    newMusic.id = 'music';
-    newMusic.preload = 'true';
-    loadAudioAsync(music).then(newMusic.src = music);   //音频异步加载
-    let oldMusic = document.getElementById('music_header');
-    oldMusic.replaceChild(newMusic,oldMusic.children[0]);
+    let newMusic = document.getElementById('music');     //绑定音频块作用域
+    loadAudioAsync( newMusic, music)                     //异步加载音频
+        .then(()=> console.log('loading music '+ music +'succeed'))
+        .catch(()=> console.log('loading music '+ music +'failed'));
+    /*
+    newMusic.src = music;
+    newMusic.onload;
+    console.log(newMusic);
+    */
 
     let newIcon = document.createElement('img');        //创建并添加图标块作用域
     newIcon.id = 'music_icon_show';
     newIcon.className = 'music_icon_show';
-    loadImageAsync(icon).then( newIcon.src = icon );     //图片预加载异步操作
-    let oldIcon = document.getElementById('music_icon');
-    oldIcon.replaceChild(newIcon,oldIcon.children[0]);
+    loadImageAsync(newIcon, icon).then( function (){    //图片预加载异步操作
+        let oldIcon = document.getElementById('music_icon');
+        oldIcon.replaceChild(newIcon,oldIcon.children[0]);
+    })
+        .catch(()=>console.log('loading image '+ icon +'failed'));
 
     let newName = document.createElement('input');       //创建并添加姓名块作用域
     newName.className = 'music_title_show';
@@ -239,7 +254,7 @@ function loadMusic( music, icon, name, color){
     let oldName = document.getElementById('music_title');
     oldName.replaceChild(newName,oldName.children[0]);
 
-    newMusic.addEventListener('ended',function () {
+    newMusic.addEventListener('ended',function () {     //播放结束的监听函数
         let status = loopStatus.status;
         console.log(status);
         switch (status){
@@ -250,26 +265,29 @@ function loadMusic( music, icon, name, color){
                 let length = document.getElementById('list_show').children.length;
                 let randomNumber = Math.trunc(Math.random() * length) + 1;
                 let newListId = 'playListId' + randomNumber.toString().padStart(3, '0');
-                document.getElementById('music').pause();
                 document.getElementById(newListId).click();
                 break;
             case 'single':
-                document.getElementById('music').pause();
-                document.getElementById('music').play();
+                let currentPlay = document.getElementsByClassName('list_music_play');
+                if( currentPlay.length > 0 ){ currentPlay[0].click(); }else{ document.getElementById('playListId001').click(); }
                 break;
             default:
                 clickNextmusic();
                 break;
         }
-    })
+    });
 
+    document.getElementById('music_progress_buffer').style.width = '0px';
+    document.getElementById('music_progress_play').style.width = '0px';
+
+    /*
     if(playStatus.status === 1){
-        let audio = document.getElementById('music')
-        audio.volume = parseFloat(document.getElementById('volume_value_show').value) / 100;
-        audio.play();
+        newMusic.volume = parseFloat(document.getElementById('volume_value_show').value) / 100;
+        newMusic.play();
         progressPause();
         progressUp(color);
     }
+    */
 }
 
 function loadLyrics( lyrics = '洛阳怀'){

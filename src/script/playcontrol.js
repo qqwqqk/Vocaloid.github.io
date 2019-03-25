@@ -1,6 +1,5 @@
 function *playClock() {
-    this.status = 0;
-    let audio;
+    this.status = -1;
     while (true) {
         yield;
         //console.log('play ');   //当前状态为播放，显示暂停图标
@@ -10,6 +9,20 @@ function *playClock() {
         //console.log('stop ');   //当前状态为暂停，显示播放图标
         document.getElementById('play').src = 'src/image/resource/play.png';
         this.status = 0;
+    }
+}
+
+function *volumeClock() {
+    this.status = false;
+    while (true) {
+        yield;
+        //console.log('stop ');   //当前状态为静音，显示静音图标
+        document.getElementById('volume').src = 'src/image/resource/mute.png';
+        this.status = true;
+        yield;
+        //console.log('play ');   //当前状态非静音，显示正常图标
+        document.getElementById('volume').src = 'src/image/resource/volume.png';
+        this.status = false;
     }
 }
 
@@ -32,6 +45,7 @@ function *loopClock() {
 }
 
 let playStatus = playClock.call(playClock.prototype);
+let volumeStatus = volumeClock.call(volumeClock.prototype);
 let loopStatus = loopClock.call(loopClock.prototype);
 
 let progressClock = null;         //音频播放进度计时器
@@ -98,6 +112,7 @@ function clickedPlay(){
     audio.volume = parseFloat(document.getElementById('volume_value_show').value) / 100;
 
     playStatus.next(audio);
+
     if(playStatus.status){
         audio.play();
         progressUp( color );
@@ -109,7 +124,6 @@ function clickedPlay(){
 }
 
 function clickPremusic(){
-    document.getElementById('music').pause();
     let length = document.getElementById('list_show').children.length;
 
     let oldListId = 'playListId001';
@@ -126,7 +140,6 @@ function clickPremusic(){
 }
 
 function clickNextmusic(){
-    document.getElementById('music').pause();
     let length = document.getElementById('list_show').children.length;
 
     let oldListId = 'playListId001';
@@ -147,7 +160,9 @@ function clickLoop(){
 }
 
 function clickVolume(){
-    console.log('volume change');
+    let music = document.getElementById('music');
+    volumeStatus.next();
+    music.muted = volumeStatus.status;
 }
 
 function clickVolumeadjust(event){
@@ -185,8 +200,7 @@ function clickProgressadjust(event){
     let ex = event.clientX + document.body.scrollLeft;
     let length = ex - obj_left - 8;
 
-    console.log('length:'+ length );        //单击的进度条相对长度
-
+    //console.log('length:'+ length );        //单击的进度条相对长度
     progress.style.backgroundColor = document.getElementById('role_name_show').style.color;
     progress.style.width = length + 'px';
 
@@ -196,4 +210,4 @@ function clickProgressadjust(event){
 
 }
 
-export { playStatus, loopStatus, progressUp, progressPause, clickedPlay, clickPremusic, clickNextmusic, clickLoop, clickVolume, clickVolumeadjust, clickProgressadjust };
+export { playStatus, volumeStatus, loopStatus, clickedPlay, clickPremusic, clickNextmusic, clickLoop, clickVolume, clickVolumeadjust, clickProgressadjust };
