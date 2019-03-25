@@ -56,7 +56,7 @@ function progressUp( color ){
     progress.style.backgroundColor = color;     //为进度条设置颜色
 
     progressClock = setInterval(function(){
-        length = music.duration;
+        if(music.duration){ length = music.duration; }else{ length = 0;}
         temp = Math.trunc(length);
         min = Math.trunc(temp / 60);
         sec = Math.trunc(temp % 60);
