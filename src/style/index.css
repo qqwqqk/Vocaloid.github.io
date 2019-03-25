@@ -13,8 +13,9 @@ body {height: 100%; background-color:lightgoldenrodyellow;background-repeat: no-
 .music_title_show{ width: 200px; height: 32px; background-color: transparent; margin: 0 10px; border: none; outline: none; font-size: 20px;}
 #music_progress{ width: 280px; height: 40px; margin: 5px 10px; float: left;}
 #music_progress_site{ position: absolute; height: 40px; width: 280px;}
-#music_progress_play{ position: absolute; width: 100px; height: 32px; margin: 4px 8px; border-radius: 16px; z-index: 1;}
-#music_progress_form{ position: absolute; width: 100%; height: 100%; z-index: 2;}
+#music_progress_buffer{ position: absolute; height: 32px; margin: 4px 8px; border-radius: 16px; z-index: 1; background-color: gray;}
+#music_progress_play{ position: absolute; height: 32px; margin: 4px 8px; border-radius: 16px; z-index: 2;}
+#music_progress_form{ position: absolute; width: 100%; height: 100%; z-index: 3;}
 #music_progress_time{ height: 40px; width: 100px; padding:5px 0; float: left; font-size: 0;}
 #music_progress_time_show{ height: 40px; width: 90px; margin: auto; border: none; outline: none; background-color: transparent;}
 /* 歌词展示框体 */
@@ -31,7 +32,7 @@ body {height: 100%; background-color:lightgoldenrodyellow;background-repeat: no-
 #volume_progress{ width: 80px; height: 32px; margin: 9px 0; float: left; font-size: 0;}
 #volume_site{ position: absolute; height: 32px; width: 60px; margin-left:20px;}
 .volume_btn{ position: absolute; height: 16px; width: 16px; margin: 8px 2px; border: none; outline: none;}
-#volume_play{ position: absolute; margin: 0 5px; border-radius: 1px; z-index: 1;}
+#volume_play{ position: absolute; height: 2px; width: 50px; margin: 15px 5px; border-radius: 1px; z-index: 1;}
 #volume_form{ position: absolute; width: 100%; height: 100%; z-index: 2;}
 #volume_value{ height: 16px; width: 32px; margin: 17px 4px; border: none; outline: none; float: left; border-radius: 2px; font-size: 0;}
 #volume_value_show{ height: 16px; width: 32px; margin: auto; border: none; outline: none; background-color: transparent;}

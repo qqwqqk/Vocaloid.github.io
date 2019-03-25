@@ -1,4 +1,4 @@
-import { playStatus, loopStatus, ProgressUp, ProgressPause, clickedPlay, clickPremusic, clickNextmusic, clickLoop, clickVolume, clickVolumeadjust, clickProgressadjust } from './playcontrol.js'
+import { playStatus, loopStatus, progressUp, progressPause, clickedPlay, clickPremusic, clickNextmusic, clickLoop, clickVolume, clickVolumeadjust, clickProgressadjust } from './playcontrol.js'
 
 window.onload = function(){
     loadControl();
@@ -70,7 +70,7 @@ function loadControl(){
         volumeForm.id = 'volume_form';
         loadImageAsync('src/image/resource/volume_progress.png')
             .then( volumeForm.src = 'src/image/resource/volume_progress.png' ); //图片预异步加载_volumeProgress
-        volumeForm.addEventListener('click',() => clickTest('volume adjust'));
+        volumeForm.addEventListener('click',() => clickVolumeadjust(event));
         volumeSite.appendChild(volumePlay);
         volumeSite.appendChild(volumeForm);
         volumeProgress.appendChild(volumeSite);
@@ -79,7 +79,7 @@ function loadControl(){
     {
         let volumeValue = document.createElement('input');
         volumeValue.id = 'volume_value_show';
-        volumeValue.value = '0';
+        volumeValue.value = '100';
         volumeValue.setAttribute('readOnly','true');
         document.getElementById('volume_value').appendChild(volumeValue);
     }//音量大小显示控件
@@ -88,13 +88,16 @@ function loadControl(){
         let musicProgress = document.getElementById('music_progress');
         let musicSite = document.createElement('div');
         musicSite.id = 'music_progress_site';
+        let musicBuffer = document.createElement('div');
+        musicBuffer.id = 'music_progress_buffer';
         let musicPlay = document.createElement('div');
         musicPlay.id = 'music_progress_play';
         let musicForm = document.createElement('img');
         musicForm.id = 'music_progress_form';
         loadImageAsync('src/image/resource/progress.png')
             .then( musicForm.src = 'src/image/resource/progress.png' ); //图片预异步加载_Progress
-        musicForm.addEventListener('click',() => clickTest('play current adjust'));
+        musicForm.addEventListener('click',() => clickProgressadjust(event));
+        musicSite.appendChild(musicBuffer);
         musicSite.appendChild(musicPlay);
         musicSite.appendChild(musicForm);
         musicProgress.appendChild(musicSite);
@@ -152,6 +155,9 @@ function loadRole( name = '洛天依'){
                     document.getElementById('role_name').appendChild(newName);
                     let oldName = document.getElementById('role_name');
                     oldName.replaceChild(newName,oldName.children[0]);
+
+                    document.getElementById('volume_play').style.backgroundColor = role.color;      //为音量调节控件设置背景色
+
                     loadList(role.musics, role.color, role.border);             //创建并添加列表块作用域
                 }else{ loadImageAsync(role.icon) }                              //图片预先加载
             }
@@ -213,6 +219,7 @@ function loadMusic( music, icon, name, color){
     //console.log(music + icon + name + color);
     let newMusic = document.createElement('audio');     //创建并添加音频块作用域
     newMusic.id = 'music';
+    newMusic.preload = 'true';
     loadAudioAsync(music).then(newMusic.src = music);   //音频异步加载
     let oldMusic = document.getElementById('music_header');
     oldMusic.replaceChild(newMusic,oldMusic.children[0]);
@@ -232,10 +239,34 @@ function loadMusic( music, icon, name, color){
     let oldName = document.getElementById('music_title');
     oldName.replaceChild(newName,oldName.children[0]);
 
+    newMusic.addEventListener('ended',function () {
+        let status = loopStatus.status;
+        console.log(status);
+        switch (status){
+            case 'loop':
+                clickNextmusic();
+                break;
+            case 'random':
+                let length = document.getElementById('list_show').children.length;
+                let randomNumber = Math.trunc(Math.random() * length) + 1;
+                let newListId = 'playListId' + randomNumber.toString().padStart(3, '0');
+                document.getElementById(newListId).click();
+                break;
+            case 'single':
+                document.getElementById('music').play();
+                break;
+            default:
+                clickNextmusic();
+                break;
+        }
+    })
+
     if(playStatus.status === 1){
-        document.getElementById('music').play();
-        ProgressPause();
-        ProgressUp(color);
+        let audio = document.getElementById('music')
+        audio.play();
+        audio.volume = parseFloat(document.getElementById('volume_value_show').value) / 100;
+        progressPause();
+        progressUp(color);
     }
 }
 

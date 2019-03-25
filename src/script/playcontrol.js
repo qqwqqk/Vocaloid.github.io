@@ -34,16 +34,19 @@ function *loopClock() {
 let playStatus = playClock.call(playClock.prototype);
 let loopStatus = loopClock.call(loopClock.prototype);
 
-let progressClock = null;         //进度时钟计时器
-function ProgressUp( color ){
-    let music = document.getElementById("music");
-    let time = document.getElementById("music_progress_time_show");
-    let progress = document.getElementById('music_progress_play');
-    let image = document.getElementById("music_icon_show");
+let progressClock = null;         //音频播放进度计时器
 
-    let current = null;
+function progressUp( color ){
+    let music = document.getElementById('music');
+    let time = document.getElementById('music_progress_time_show');
+    let buff_progress = document.getElementById('music_progress_buffer');
+    let progress = document.getElementById('music_progress_play');
+    let image = document.getElementById('music_icon_show');
+
+    let buffer = null;
+    let played = null;
     let temp = null, min = null, sec=null;
-    let current_time = null;
+    let played_time = null;
     let full_time = null;
     let length = null;
     let pro_width = null;
@@ -57,22 +60,26 @@ function ProgressUp( color ){
         sec = Math.trunc(temp % 60);
         full_time = min + ":" + sec;
 
-        current = music.currentTime;
-        pro_width = current / length * 264 + "px";
+        buffer = music.buffered;
+        pro_width = buffer / length * 264 + 'px';
+        buff_progress.style.width = pro_width;
+
+        played = music.currentTime;
+        pro_width = played / length * 264 + 'px';
         //console.log("progress width" + pro_width);
         progress.style.width = pro_width;
 
-        temp = Math.trunc(current);
+        temp = Math.trunc(played);
         min = Math.trunc(temp / 60);
         sec = Math.trunc(temp % 60);
-        current_time = min + ":" + sec;
-        time.value = current_time + " / " + full_time;
+        played_time = min + ':' + sec;
+        time.value = played_time + ' / ' + full_time;
 
-        image.style.transform="rotate(" + Math.trunc(current * 60 % 360) + "deg)";
+        image.style.transform='rotate(' + Math.trunc(played * 60 % 360) + 'deg)';
     },20);
 
 }
-function ProgressPause(){
+function progressPause(){
     clearInterval(progressClock);
 }
 
@@ -80,37 +87,17 @@ function clickedPlay(){
     let audio = document.getElementById('music');
     let color = document.getElementById('role_name_show').style.color;
 
+    audio.volume = parseFloat(document.getElementById('volume_value_show').value) / 100;
+
     playStatus.next(audio);
     if(playStatus.status){
         audio.play();
-        ProgressUp( color );
+        progressUp( color );
     }else{
         audio.pause();
-        ProgressPause();
+        progressPause();
     }
     //console.log(playStatus.status);       //输出当前播放状态的标识码
-
-    audio.addEventListener('ended',function () {
-        let status = loopStatus.status;
-        console.log(status);
-        switch (status){
-            case 'loop':
-                clickNextmusic();
-                break;
-            case 'random':
-                let length = document.getElementById('list_show').children.length;
-                let randomNumber = Math.trunc(Math.random() * length) + 1;
-                let newListId = 'playListId' + randomNumber.toString().padStart(3, '0');
-                document.getElementById(newListId).click();
-                break;
-            case 'single':
-                document.getElementById('music').play();
-                break;
-            default:
-                clickNextmusic();
-                break;
-        }
-    })
 }
 
 function clickPremusic(){
@@ -153,12 +140,53 @@ function clickVolume(){
     console.log('volume change');
 }
 
-function clickVolumeadjust(){
-    console.log('volume adjust');
+function clickVolumeadjust(event){
+    let music = document.getElementById("music");
+    let val_volume = document.getElementById("volume_value_show");
+    let progress = document.getElementById('volume_play');
+
+    let obj = document.getElementById("volume_site");
+    let obj_left = obj.offsetLeft;
+    let ex = event.clientX + document.body.scrollLeft;
+    let length = ex - obj_left;
+
+    //console.log("s_length:" + length );        //单击音量条相对长度
+    if(Math.trunc(length)<5){
+        length = 0;
+        val_volume.value = 0;
+        music.volume = 0;
+    }else if(Math.trunc(length)>55){
+        length = 50;
+        val_volume.value = 100;
+        music.volume = 1;
+    }else{
+        length -= 5;
+        val_volume.value = length * 2;
+        music.volume = length / 50;
+    }
+    progress.style.width = length + 'px';
 }
 
-function clickProgressadjust(){
-    console.log('progress adjust');
+function clickProgressadjust(event){
+    let music = document.getElementById('music');
+    let obj = document.getElementById('music_progress_site');
+    let progress = document.getElementById('music_progress_play');
+    let obj_left = obj.offsetLeft;
+    let ex = event.clientX + document.body.scrollLeft;
+    let length = ex - obj_left - 8;
+
+    console.log('length:'+ length );        //单击的进度条相对长度
+
+    progress.style.backgroundColor = document.getElementById('role_name_show').style.color;
+    progress.style.width = length + 'px';
+
+    let count_time = music.duration;
+    let current_time = count_time * length / 264;
+    music.currentTime = current_time.toString();
+
+    if(playStatus.status === 1){
+        music.play();
+    }
 }
 
-export { playStatus, loopStatus, ProgressUp, ProgressPause, clickedPlay, clickPremusic, clickNextmusic, clickLoop, clickVolume, clickVolumeadjust, clickProgressadjust };
+export { playStatus, loopStatus, progressUp, progressPause, clickedPlay, clickPremusic, clickNextmusic, clickLoop, clickVolume, clickVolumeadjust, clickProgressadjust };
