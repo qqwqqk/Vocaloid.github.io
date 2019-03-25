@@ -181,7 +181,7 @@ function loadList(musicUrl = 'Luo_Tianyi.json', musicColor, musicBorder){
                 if(typeof(defaultMusic) === 'undefined'){ defaultMusic = music.url; defaultIcon = music.icon; defaultName = music.title; }
 
                 loadImageAsync(music.icon);     //图片预先加载
-                loadAudioAsync(music.url);      //音频异步加载
+                //loadAudioAsync(music.url);      //音频异步加载
 
                 let newMusic = document.createElement('input');        //创建并添加音乐列表选项
                 newMusic.id = 'playListId' + listId.toString().padStart(3, '0');
@@ -250,9 +250,11 @@ function loadMusic( music, icon, name, color){
                 let length = document.getElementById('list_show').children.length;
                 let randomNumber = Math.trunc(Math.random() * length) + 1;
                 let newListId = 'playListId' + randomNumber.toString().padStart(3, '0');
+                document.getElementById('music').pause();
                 document.getElementById(newListId).click();
                 break;
             case 'single':
+                document.getElementById('music').pause();
                 document.getElementById('music').play();
                 break;
             default:
@@ -263,8 +265,8 @@ function loadMusic( music, icon, name, color){
 
     if(playStatus.status === 1){
         let audio = document.getElementById('music')
-        audio.play();
         audio.volume = parseFloat(document.getElementById('volume_value_show').value) / 100;
+        audio.play();
         progressPause();
         progressUp(color);
     }

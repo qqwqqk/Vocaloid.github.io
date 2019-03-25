@@ -49,7 +49,9 @@ function progressUp( color ){
     let played_time = null;
     let full_time = null;
     let length = null;
-    let pro_width = null;
+    let buffer_width = null;
+    let played_width = null;
+    let cache = null;
 
     progress.style.backgroundColor = color;     //为进度条设置颜色
 
@@ -58,21 +60,27 @@ function progressUp( color ){
         temp = Math.trunc(length);
         min = Math.trunc(temp / 60);
         sec = Math.trunc(temp % 60);
-        full_time = min + ":" + sec;
+        full_time = min.toString().padStart(2, '0') + ":" + sec.toString().padStart(2, '0');
 
-        buffer = music.buffered;
-        pro_width = buffer / length * 264 + 'px';
-        buff_progress.style.width = pro_width;
+        cache = music.buffered;
+        if(cache.length > 0){ buffer = cache.end(0); }else{ buffer = 0;}
+        buffer_width = buffer / length * 264 + 'px';
+        buff_progress.style.width = buffer_width;
 
-        played = music.currentTime;
-        pro_width = played / length * 264 + 'px';
+        cache = music.currentTime;
+        if(cache){ played = cache; }else{ played = 0;}
+        played_width = played / length * 264 + 'px';
         //console.log("progress width" + pro_width);
-        progress.style.width = pro_width;
+        progress.style.width = played_width;
+
+        if( music.paused && buffer - played > 20){ music.play(); }
+        if( !music.paused && played >= buffer ){ music.pause(); }
+        //console.log('paused: ' + music.paused + '\t played: ' + played + '\t buffer:' + buffer);
 
         temp = Math.trunc(played);
         min = Math.trunc(temp / 60);
         sec = Math.trunc(temp % 60);
-        played_time = min + ':' + sec;
+        played_time = min.toString().padStart(2, '0') + ':' + sec.toString().padStart(2, '0');
         time.value = played_time + ' / ' + full_time;
 
         image.style.transform='rotate(' + Math.trunc(played * 60 % 360) + 'deg)';
@@ -101,6 +109,7 @@ function clickedPlay(){
 }
 
 function clickPremusic(){
+    document.getElementById('music').pause();
     let length = document.getElementById('list_show').children.length;
 
     let oldListId = 'playListId001';
@@ -117,6 +126,7 @@ function clickPremusic(){
 }
 
 function clickNextmusic(){
+    document.getElementById('music').pause();
     let length = document.getElementById('list_show').children.length;
 
     let oldListId = 'playListId001';
@@ -184,9 +194,6 @@ function clickProgressadjust(event){
     let current_time = count_time * length / 264;
     music.currentTime = current_time.toString();
 
-    if(playStatus.status === 1){
-        music.play();
-    }
 }
 
 export { playStatus, loopStatus, progressUp, progressPause, clickedPlay, clickPremusic, clickNextmusic, clickLoop, clickVolume, clickVolumeadjust, clickProgressadjust };
