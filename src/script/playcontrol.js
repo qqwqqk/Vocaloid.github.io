@@ -72,12 +72,13 @@ function progressUp( color ){
     progressClock = setInterval(function(){
         if(music.readyState < readState){                       //切换音乐
             readState = 0; music.pause();
+            time.value = '00：00 / 00：00';
         }
+
         if(music.readyState > readState){                       //加载状态变化
             readState = music.readyState;
             if(music.readyState === 4  && music.paused){
                 console.log('loading succeed');                 //加载完成
-                image = document.getElementById('music_icon_show');
                 music.play();
             }
             else{
@@ -85,32 +86,36 @@ function progressUp( color ){
             }
         }
 
-        if(music.duration){ length = music.duration; }else{ length = 0;}
-        temp = Math.trunc(length);
-        min = Math.trunc(temp / 60);
-        sec = Math.trunc(temp % 60);
-        full_time = min.toString().padStart(2, '0') + ":" + sec.toString().padStart(2, '0');
+        if(music.readyState === 4){                             //正常播放
+            image = document.getElementById('music_icon_show');
 
-        cache = music.buffered;
-        if(cache.length > 0){ buffer = cache.end(0); }else{ buffer = 0;}
-        buffer_width = buffer / length * 264 + 'px';
-        buff_progress.style.width = buffer_width;
+            if(music.duration){ length = music.duration; }else{ length = 0;}
+            temp = Math.trunc(length);
+            min = Math.trunc(temp / 60);
+            sec = Math.trunc(temp % 60);
+            full_time = min.toString().padStart(2, '0') + ":" + sec.toString().padStart(2, '0');
 
-        cache = music.currentTime;
-        if(cache){ played = cache; }else{ played = 0;}
-        played_width = played / length * 264 + 'px';
-        //console.log("progress width" + pro_width);
-        progress.style.width = played_width;
+            cache = music.buffered;
+            if(cache.length > 0){ buffer = cache.end(0); }else{ buffer = 0;}
+            buffer_width = buffer / length * 264 + 'px';
+            buff_progress.style.width = buffer_width;
 
-        //console.log('paused: ' + music.paused + '\t played: ' + played + '\t buffer:' + buffer);
+            cache = music.currentTime;
+            if(cache){ played = cache; }else{ played = 0;}
+            played_width = played / length * 264 + 'px';
+            //console.log("progress width" + pro_width);
+            progress.style.width = played_width;
 
-        temp = Math.trunc(played);
-        min = Math.trunc(temp / 60);
-        sec = Math.trunc(temp % 60);
-        played_time = min.toString().padStart(2, '0') + ':' + sec.toString().padStart(2, '0');
-        time.value = played_time + ' / ' + full_time;
+            //console.log('paused: ' + music.paused + '\t played: ' + played + '\t buffer:' + buffer);
 
-        image.style.transform='rotate(' + Math.trunc(played * 60 % 360) + 'deg)';
+            temp = Math.trunc(played);
+            min = Math.trunc(temp / 60);
+            sec = Math.trunc(temp % 60);
+            played_time = min.toString().padStart(2, '0') + ':' + sec.toString().padStart(2, '0');
+            time.value = played_time + ' / ' + full_time;
+
+            image.style.transform='rotate(' + Math.trunc(played * 60 % 360) + 'deg)';
+        }
     },20);
 
 }
