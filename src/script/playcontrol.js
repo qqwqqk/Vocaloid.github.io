@@ -72,7 +72,8 @@ function progressUp( color ){
     progressClock = setInterval(function(){
         if(music.readyState < readState){                       //切换音乐
             readState = 0; music.pause();
-            time.value = '00：00 / 00：00';
+            console.log('loading...' + readState);              //加载更新中
+            time.value = '00:00 / 00:00';
         }
 
         if(music.readyState > readState){                       //加载状态变化
