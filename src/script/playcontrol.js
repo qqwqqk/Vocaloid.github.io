@@ -55,8 +55,7 @@ function progressUp( color ){
     let time = document.getElementById('music_progress_time_show');
     let buff_progress = document.getElementById('music_progress_buffer');
     let progress = document.getElementById('music_progress_play');
-    let image = document.getElementById('music_icon_show');
-
+    let image = null;
     let buffer = null;
     let played = null;
     let temp = null, min = null, sec=null;
@@ -66,11 +65,26 @@ function progressUp( color ){
     let buffer_width = null;
     let played_width = null;
     let cache = null;
-    let readState = -1;
+    let readState = 5;
 
     progress.style.backgroundColor = color;     //为进度条设置颜色
 
     progressClock = setInterval(function(){
+        if(music.readyState < readState){                       //切换音乐
+            readState = 0; music.pause();
+        }
+        if(music.readyState > readState){                       //加载状态变化
+            readState = music.readyState;
+            if(music.readyState === 4  && music.paused){
+                console.log('loading succeed');                 //加载完成
+                image = document.getElementById('music_icon_show');
+                music.play();
+            }
+            else{
+                console.log('loading...' + readState);          //加载更新中
+            }
+        }
+
         if(music.duration){ length = music.duration; }else{ length = 0;}
         temp = Math.trunc(length);
         min = Math.trunc(temp / 60);
@@ -87,17 +101,6 @@ function progressUp( color ){
         played_width = played / length * 264 + 'px';
         //console.log("progress width" + pro_width);
         progress.style.width = played_width;
-
-        if(music.readyState < 4 && music.readyState > readState ){
-            readState = music.readyState;
-            console.log('loading...' + readState);
-            if(!music.paused){music.pause();}
-        }
-
-        if( music.readyState > 3 && music.paused){
-            console.log('loading succeed');
-            music.play();
-        }
 
         //console.log('paused: ' + music.paused + '\t played: ' + played + '\t buffer:' + buffer);
 
@@ -124,6 +127,7 @@ function clickedPlay(){
         progressUp( color );
     }else{
         progressPause();
+        audio.pause();
     }
     //console.log(playStatus.status);       //输出当前播放状态的标识码
 }

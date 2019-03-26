@@ -268,8 +268,7 @@ function loadMusic( music, icon, name, color){
                 document.getElementById(newListId).click();
                 break;
             case 'single':
-                let currentPlay = document.getElementsByClassName('list_music_play');
-                if( currentPlay.length > 0 ){ currentPlay[0].click(); }else{ document.getElementById('playListId001').click(); }
+                newMusic.currentTime = 0;
                 break;
             default:
                 clickNextmusic();
