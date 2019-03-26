@@ -66,6 +66,7 @@ function progressUp( color ){
     let buffer_width = null;
     let played_width = null;
     let cache = null;
+    let readState = -1;
 
     progress.style.backgroundColor = color;     //为进度条设置颜色
 
@@ -87,8 +88,17 @@ function progressUp( color ){
         //console.log("progress width" + pro_width);
         progress.style.width = played_width;
 
-        if( music.paused && buffer - played > 20){ music.play(); }
-        if( !music.paused && played >= buffer ){ music.pause(); }
+        if(music.readyState < 4 && music.readyState > readState ){
+            readState = music.readyState;
+            console.log('loading...' + readState);
+            if(!music.paused){music.pause();}
+        }
+
+        if( music.readyState > 3 && music.paused){
+            console.log('loading succeed');
+            music.play();
+        }
+
         //console.log('paused: ' + music.paused + '\t played: ' + played + '\t buffer:' + buffer);
 
         temp = Math.trunc(played);
@@ -108,16 +118,11 @@ function progressPause(){
 function clickedPlay(){
     let audio = document.getElementById('music');
     let color = document.getElementById('role_name_show').style.color;
-
     audio.volume = parseFloat(document.getElementById('volume_value_show').value) / 100;
-
     playStatus.next(audio);
-
     if(playStatus.status){
-        audio.play();
         progressUp( color );
     }else{
-        audio.pause();
         progressPause();
     }
     //console.log(playStatus.status);       //输出当前播放状态的标识码
