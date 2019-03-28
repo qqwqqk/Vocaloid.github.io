@@ -2,9 +2,9 @@ import { playStatus, volumeStatus, loopStatus, clickedPlay, clickPremusic, click
 
 window.onload = function(){
     loadControl();
-    //confirm('loading...');
-    //loadRole('洛天依');
-    loadRole('乐正绫');
+    let randomNumber = Math.random();
+    if(randomNumber < 0.5){ loadRole('洛天依'); }
+    else{  loadRole('乐正绫');}
 };
 
 function loadImageAsync(image, url) {
