@@ -78,6 +78,7 @@ function progressUp( color ){
         if(music.readyState < readState){                               //切换音乐
             readState = 0; music.pause();
             console.log('loading...' + readState);                    //加载更新中
+            document.getElementById('music_title_show').value = document.getElementById('music_title_show').value + '     Loading...';
             time.value = '00:00 / 00:00';
         }
 
@@ -85,6 +86,7 @@ function progressUp( color ){
             readState = music.readyState;
             if(music.readyState === 4  && music.paused){
                 console.log('loading succeed');                         //加载完成
+                document.getElementById('music_title_show').value = document.getElementById('music_title_show').value.replace('     Loading...','');
                 image = document.getElementById('music_icon_show');         //绑定图像旋转
                 lyricsForm = document.getElementById('lyrics_box');         //绑定歌词列表
                 lyricsHeight = lyricsForm.scrollHeight;
@@ -97,6 +99,7 @@ function progressUp( color ){
             }
             else{
                 console.log('loading...' + readState);                  //加载更新中
+                document.getElementById('music_title_show').value = document.getElementById('music_title_show').value + '     Loading...';
             }
         }
 

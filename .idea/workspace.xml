@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd59d6e9-64d5-44c3-9a36-8570a41d6269" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/dataset/lyrics/Luo_Tianyi/八辈子.lrc" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/lyrics/Luo_Tianyi/八辈子.lrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/lyrics/Luo_Tianyi/洛阳怀.lrc" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/lyrics/Luo_Tianyi/洛阳怀.lrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/script/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/script/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/script/playcontrol.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/script/playcontrol.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,8 +20,50 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="7" column="70" lean-forward="true" selection-start-line="7" selection-start-column="70" selection-end-line="7" selection-end-column="70" />
+            <state relative-caret-position="110">
+              <caret line="5" column="67" lean-forward="true" selection-start-line="5" selection-start-column="67" selection-end-line="5" selection-end-column="67" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/script/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="506">
+              <caret line="229" column="68" lean-forward="true" selection-start-line="229" selection-start-column="68" selection-end-line="229" selection-end-column="68" />
+              <folding>
+                <element signature="e#207#343#0" />
+                <element signature="n#!!block;n#loadImageAsync#0" />
+                <element signature="n#!!block;n#loadAudioAsync#0" />
+                <element signature="n#!!block;n#loadControl#0" />
+                <element signature="n#!!block;n#controlClick#0" />
+                <element signature="n#!!block;n#loadRole#0" />
+                <element signature="n#!!block;n#loadList#0" />
+                <element signature="n#!!block;n#clickList#0" />
+                <element signature="n#!!block;n#loadLyrics#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="playcontrol.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/script/playcontrol.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="218">
+              <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
+              <folding>
+                <element signature="n#!!block;n#playClock#0" />
+                <element signature="n#!!block;n#volumeClock#0" />
+                <element signature="n#!!block;n#loopClock#0" />
+                <element signature="n#!!block;n#progressPause#0" />
+                <element signature="n#!!block;n#clickedPlay#0" />
+                <element signature="n#!!block;n#clickPremusic#0" />
+                <element signature="n#!!block;n#clickNextmusic#0" />
+                <element signature="n#!!block;n#clickLoop#0" />
+                <element signature="n#!!block;n#clickVolume#0" />
+                <element signature="n#!!block;n#clickVolumeadjust#0" />
+                <element signature="n#!!block;n#clickProgressadjust#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -31,8 +71,8 @@
       <file leaf-file-name="index.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/style/index.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="4" column="55" lean-forward="true" selection-start-line="4" selection-start-column="55" selection-end-line="4" selection-end-column="55" />
+            <state relative-caret-position="22">
+              <caret line="4" column="55" selection-start-line="4" selection-start-column="55" selection-end-line="4" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -77,12 +117,12 @@
         <option value="$PROJECT_DIR$/dataset/lyrics/Yuezheng_Ling/五重空洞.lrc" />
         <option value="$PROJECT_DIR$/dataset/lyrics/Yuezheng_Ling/易水诀.lrc" />
         <option value="$PROJECT_DIR$/dataset/lyrics/Yuezheng_Ling/霜雪千年.lrc" />
-        <option value="$PROJECT_DIR$/src/script/playcontrol.js" />
         <option value="$PROJECT_DIR$/src/style/index.css" />
-        <option value="$PROJECT_DIR$/src/script/main.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/dataset/lyrics/Luo_Tianyi/八辈子.lrc" />
         <option value="$PROJECT_DIR$/dataset/lyrics/Luo_Tianyi/洛阳怀.lrc" />
+        <option value="$PROJECT_DIR$/src/script/main.js" />
+        <option value="$PROJECT_DIR$/src/script/playcontrol.js" />
       </list>
     </option>
   </component>
@@ -109,6 +149,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -126,11 +167,16 @@
               <item name="ECASCript.github.io" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="ECASCript.github.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ECASCript.github.io" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="script" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -183,11 +229,12 @@
       <workItem from="1553562015422" duration="28196000" />
       <workItem from="1553646616454" duration="27210000" />
       <workItem from="1553731897903" duration="8972000" />
+      <workItem from="1553773505180" duration="581000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="200287000" />
+    <option name="totallyTimeSpent" value="200868000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1394" height="916" extended-state="6" />
@@ -199,7 +246,7 @@
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="TypeScript" order="8" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49871466" visible="true" weight="0.14467765" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49871466" visible="true" weight="0.14692654" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" sideWeight="0.5012854" side_tool="true" weight="0.11694153" />
@@ -222,7 +269,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="13" />
+      <option name="time" value="14" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -251,7 +298,7 @@
         <state relative-caret-position="2134">
           <caret line="97" column="22" lean-forward="true" selection-start-line="97" selection-start-column="22" selection-end-line="97" selection-end-column="22" />
           <folding>
-            <element signature="e#207#302#0" />
+            <element signature="e#207#343#0" />
             <element signature="n#!!block;n#loadImageAsync#0" />
             <element signature="n#!!block;n#loadAudioAsync#0" />
             <element signature="n#!!block;n#loadControl#0" />
@@ -259,7 +306,6 @@
             <element signature="n#!!block;n#loadRole#0" />
             <element signature="n#!!block;n#loadList#0" />
             <element signature="n#!!block;n#clickList#0" />
-            <element signature="n#!!block;n#loadMusic#0" />
             <element signature="n#!!block;n#loadLyrics#0" />
           </folding>
         </state>
@@ -284,7 +330,7 @@
         <state relative-caret-position="44">
           <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
           <folding>
-            <element signature="e#207#302#0" />
+            <element signature="e#207#343#0" />
             <element signature="n#!!block;n#loadImageAsync#0" />
             <element signature="n#!!block;n#loadAudioAsync#0" />
             <element signature="n#!!block;n#loadControl#0" />
@@ -292,7 +338,6 @@
             <element signature="n#!!block;n#loadRole#0" />
             <element signature="n#!!block;n#loadList#0" />
             <element signature="n#!!block;n#clickList#0" />
-            <element signature="n#!!block;n#loadMusic#0" />
             <element signature="n#!!block;n#loadLyrics#0" />
           </folding>
         </state>
@@ -345,7 +390,7 @@
         <state relative-caret-position="1122">
           <caret line="51" column="33" lean-forward="true" selection-start-line="51" selection-start-column="33" selection-end-line="51" selection-end-column="33" />
           <folding>
-            <element signature="e#207#302#0" />
+            <element signature="e#207#343#0" />
             <element signature="n#!!block;n#loadImageAsync#0" />
             <element signature="n#!!block;n#loadAudioAsync#0" />
             <element signature="n#!!block;n#loadControl#0" />
@@ -353,7 +398,6 @@
             <element signature="n#!!block;n#loadRole#0" />
             <element signature="n#!!block;n#loadList#0" />
             <element signature="n#!!block;n#clickList#0" />
-            <element signature="n#!!block;n#loadMusic#0" />
             <element signature="n#!!block;n#loadLyrics#0" />
           </folding>
         </state>
@@ -446,45 +490,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dataset/lyrics/Luo_Tianyi/一半一半.lrc" />
-    <entry file="file://$PROJECT_DIR$/src/script/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
-          <folding>
-            <element signature="e#207#302#0" />
-            <element signature="n#!!block;n#loadImageAsync#0" />
-            <element signature="n#!!block;n#loadAudioAsync#0" />
-            <element signature="n#!!block;n#loadControl#0" />
-            <element signature="n#!!block;n#controlClick#0" />
-            <element signature="n#!!block;n#loadRole#0" />
-            <element signature="n#!!block;n#loadList#0" />
-            <element signature="n#!!block;n#clickList#0" />
-            <element signature="n#!!block;n#loadMusic#0" />
-            <element signature="n#!!block;n#loadLyrics#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/script/playcontrol.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="135" column="93" selection-start-line="135" selection-start-column="93" selection-end-line="135" selection-end-column="93" />
-          <folding>
-            <element signature="n#!!block;n#playClock#0" />
-            <element signature="n#!!block;n#volumeClock#0" />
-            <element signature="n#!!block;n#loopClock#0" />
-            <element signature="n#!!block;n#progressPause#0" />
-            <element signature="n#!!block;n#clickedPlay#0" />
-            <element signature="n#!!block;n#clickPremusic#0" />
-            <element signature="n#!!block;n#clickNextmusic#0" />
-            <element signature="n#!!block;n#clickLoop#0" />
-            <element signature="n#!!block;n#clickVolume#0" />
-            <element signature="n#!!block;n#clickVolumeadjust#0" />
-            <element signature="n#!!block;n#clickProgressadjust#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dataset/lyrics/Luo_Tianyi/八辈子.lrc">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1100">
@@ -585,15 +590,53 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/style/index.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="55" lean-forward="true" selection-start-line="4" selection-start-column="55" selection-end-line="4" selection-end-column="55" />
+        <state relative-caret-position="22">
+          <caret line="4" column="55" selection-start-line="4" selection-start-column="55" selection-end-line="4" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/script/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="229" column="68" lean-forward="true" selection-start-line="229" selection-start-column="68" selection-end-line="229" selection-end-column="68" />
+          <folding>
+            <element signature="e#207#343#0" />
+            <element signature="n#!!block;n#loadImageAsync#0" />
+            <element signature="n#!!block;n#loadAudioAsync#0" />
+            <element signature="n#!!block;n#loadControl#0" />
+            <element signature="n#!!block;n#controlClick#0" />
+            <element signature="n#!!block;n#loadRole#0" />
+            <element signature="n#!!block;n#loadList#0" />
+            <element signature="n#!!block;n#clickList#0" />
+            <element signature="n#!!block;n#loadLyrics#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/script/playcontrol.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
+          <folding>
+            <element signature="n#!!block;n#playClock#0" />
+            <element signature="n#!!block;n#volumeClock#0" />
+            <element signature="n#!!block;n#loopClock#0" />
+            <element signature="n#!!block;n#progressPause#0" />
+            <element signature="n#!!block;n#clickedPlay#0" />
+            <element signature="n#!!block;n#clickPremusic#0" />
+            <element signature="n#!!block;n#clickNextmusic#0" />
+            <element signature="n#!!block;n#clickLoop#0" />
+            <element signature="n#!!block;n#clickVolume#0" />
+            <element signature="n#!!block;n#clickVolumeadjust#0" />
+            <element signature="n#!!block;n#clickProgressadjust#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="70" lean-forward="true" selection-start-line="7" selection-start-column="70" selection-end-line="7" selection-end-column="70" />
+        <state relative-caret-position="110">
+          <caret line="5" column="67" lean-forward="true" selection-start-line="5" selection-start-column="67" selection-end-line="5" selection-end-column="67" />
         </state>
       </provider>
     </entry>

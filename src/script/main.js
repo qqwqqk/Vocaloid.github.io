@@ -239,6 +239,7 @@ function loadMusic( music, lyrics, icon, name, color){
         .catch(()=>console.log('loading image '+ icon +'failed'));
 
     let newName = document.createElement('input');       //创建并添加曲名作用域
+    newName.id = 'music_title_show';
     newName.className = 'music_title_show';
     newName.value = name;
     newName.style.color = color;
