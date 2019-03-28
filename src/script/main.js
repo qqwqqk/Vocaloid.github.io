@@ -3,12 +3,9 @@ import { playStatus, volumeStatus, loopStatus, clickedPlay, clickPremusic, click
 window.onload = function(){
     loadControl();
     //confirm('loading...');
-    loadRole('洛天依');
+    //loadRole('洛天依');
+    loadRole('乐正绫');
 };
-
-function clickTest(str){
-    console.log(str);
-}             //测试函数
 
 function loadImageAsync(image, url) {
     return new Promise(function(resolve, reject) {
@@ -176,8 +173,8 @@ function loadRole( name = '洛天依'){
 function loadList(musicUrl = 'Luo_Tianyi.json', musicColor, musicBorder){
     let oldMusicLists = document.getElementById('list_show');
     let newMusicLists = document.createElement('div');
-    let musicsUrl = 'interface/' + musicUrl;
-    let defaultMusic, defaultIcon, defaultName;
+    let musicsUrl = musicUrl;
+    let defaultMusic, defaultLyrics, defaultIcon, defaultName;
     fetch(musicsUrl)
         .then(res => res.json())
         .then(function(data){
@@ -187,7 +184,7 @@ function loadList(musicUrl = 'Luo_Tianyi.json', musicColor, musicBorder){
             for(let music of musics){
                 //console.log(music);
                 listId += 1;
-                if(typeof(defaultMusic) === 'undefined'){ defaultMusic = music.url; defaultIcon = music.icon; defaultName = music.title; }
+                if(typeof(defaultMusic) === 'undefined'){ defaultMusic = music.url; defaultLyrics = music.lyrics; defaultIcon = music.icon; defaultName = music.title; }
 
                 loadImageAsync(newImage, music.icon).catch(()=>console.log('loading image' + newImage.src + 'failed'));     //图片预先加载
                 //loadAudioAsync(music.url);      //音频异步加载
@@ -197,17 +194,17 @@ function loadList(musicUrl = 'Luo_Tianyi.json', musicColor, musicBorder){
                 newMusic.value = music.title;
                 newMusic.type = 'button';
                 newMusic.className = 'list_music';
-                newMusic.addEventListener('click',() => clickList(newMusic.id, music.url, music.icon, music.title, musicColor, musicBorder));
+                newMusic.addEventListener('click',() => clickList(newMusic.id, music.url, music.lyrics, music.icon, music.title, musicColor, musicBorder));
                 newMusicLists.appendChild(newMusic);
             }
             newMusicLists.id = 'list_show';
             oldMusicLists.parentNode.replaceChild(newMusicLists,oldMusicLists);
-            loadMusic(defaultMusic, defaultIcon, defaultName, musicColor);
+            loadMusic(defaultMusic,defaultLyrics, defaultIcon, defaultName, musicColor);
         })
         .catch(err => console.log(err))
 }
 
-function clickList(id, music, icon, name, color, border) {
+function clickList(id, music, lyrics, icon, name, color, border) {
     let oldStyle = document.getElementsByClassName('list_music_play');
     if(oldStyle.length > 0){
         oldStyle[0].style.color = '#000000';
@@ -222,20 +219,15 @@ function clickList(id, music, icon, name, color, border) {
     //console.log('4px outset ' + border);
 
     //document.getElementById('music').pause();
-    loadMusic(music, icon, name, color);
+    loadMusic(music, lyrics, icon, name, color);
 }
 
-function loadMusic( music, icon, name, color){
+function loadMusic( music, lyrics, icon, name, color){
     //console.log(music + icon + name + color);
     let newMusic = document.getElementById('music');     //绑定音频块作用域
     loadAudioAsync( newMusic, music)                     //异步加载音频
-        .then(()=> console.log('loading music '+ music +'succeed'))
+        //.then(()=> console.log('loading music '+ music +'succeed'))
         .catch(()=> console.log('loading music '+ music +'failed'));
-    /*
-    newMusic.src = music;
-    newMusic.onload;
-    console.log(newMusic);
-    */
 
     let newIcon = document.createElement('img');        //创建并添加图标块作用域
     newIcon.id = 'music_icon_show';
@@ -246,13 +238,15 @@ function loadMusic( music, icon, name, color){
     })
         .catch(()=>console.log('loading image '+ icon +'failed'));
 
-    let newName = document.createElement('input');       //创建并添加姓名块作用域
+    let newName = document.createElement('input');       //创建并添加曲名作用域
     newName.className = 'music_title_show';
     newName.value = name;
     newName.style.color = color;
     newName.setAttribute('readOnly','true');
     let oldName = document.getElementById('music_title');
     oldName.replaceChild(newName,oldName.children[0]);
+
+    loadLyrics(lyrics);                                    //歌词加载
 
     newMusic.addEventListener('ended',function () {     //播放结束的监听函数
         let status = loopStatus.status;
@@ -268,7 +262,8 @@ function loadMusic( music, icon, name, color){
                 document.getElementById(newListId).click();
                 break;
             case 'single':
-                newMusic.currentTime = 0;
+                let currentPlay = document.getElementsByClassName('list_music_play');
+                if( currentPlay.length > 0 ){ currentPlay[0].click(); }else{ document.getElementById('playListId001').click(); }
                 break;
             default:
                 clickNextmusic();
@@ -278,22 +273,38 @@ function loadMusic( music, icon, name, color){
 
     document.getElementById('music_progress_buffer').style.width = '0px';
     document.getElementById('music_progress_play').style.width = '0px';
-
-    /*
-    if(playStatus.status === 1){
-        newMusic.volume = parseFloat(document.getElementById('volume_value_show').value) / 100;
-        newMusic.play();
-        progressPause();
-        progressUp(color);
-    }
-    */
 }
 
-function loadLyrics( lyrics = '洛阳怀'){
-    console.log('Loading Lyrics ' + lyrics + ' Start');
+function loadLyrics( lyrics ){
+    let oldLyrics = document.getElementById('lyrics_box');
+    let newLyrics = document.createElement('form');
 
-    return new Promise((resolve) => {
-        setTimeout(resolve, 1000);
-        console.log('Loading Lyrics ' + lyrics + ' Succeed');
-    });
+    fetch(lyrics)
+        .then(res => res.text())
+        .then(function(data) {
+            let arrayList = data.split('\n');
+            for(let row of arrayList){
+                row = row.replace('[','');
+                let cache = row.split(']');
+                let cache_time = cache[0].split(':');
+                let lyricsTime = (Number.parseFloat(cache_time[0]) * 60 + Number.parseFloat(cache_time[1])).toFixed(2);
+                let lyricsText = cache[1].replace('\r','');
+                //console.log(lyricsTime + ' - ' + lyricsText);
+
+                if(lyricsText){
+                    let newText = document.createElement('p');
+                    newText.id = 'lyrics_' + lyricsTime;
+                    newText.innerText = lyricsText;
+                    newLyrics.appendChild(newText);
+                }
+                else{
+                    let newText = document.createElement('br');
+                    newText.id = 'lyrics_' + lyricsTime;
+                    newLyrics.appendChild(newText);
+                }
+            }
+            newLyrics.id = 'lyrics_box';
+            oldLyrics.parentNode.replaceChild(newLyrics,oldLyrics);
+        })
+        .catch(() => console.log('loading ' + lyrics + 'error'))
 }

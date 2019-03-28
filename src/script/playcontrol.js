@@ -55,10 +55,15 @@ function progressUp( color ){
     let time = document.getElementById('music_progress_time_show');
     let buff_progress = document.getElementById('music_progress_buffer');
     let progress = document.getElementById('music_progress_play');
+    let lyricsForm = null;
+    let lyricsLists = null;
+    let lyricsCache = [];
+    let lyricsCurrent = null;
+    let lyricsHight = null;
     let image = null;
     let buffer = null;
     let played = null;
-    let temp = null, min = null, sec=null;
+    let temp = null, min = null, sec = null;
     let played_time = null;
     let full_time = null;
     let length = null;
@@ -70,26 +75,32 @@ function progressUp( color ){
     progress.style.backgroundColor = color;     //为进度条设置颜色
 
     progressClock = setInterval(function(){
-        if(music.readyState < readState){                       //切换音乐
+        if(music.readyState < readState){                               //切换音乐
             readState = 0; music.pause();
-            console.log('loading...' + readState);              //加载更新中
+            //console.log('loading...' + readState);                    //加载更新中
             time.value = '00:00 / 00:00';
         }
 
-        if(music.readyState > readState){                       //加载状态变化
+        if(music.readyState > readState){                               //加载状态变化
             readState = music.readyState;
             if(music.readyState === 4  && music.paused){
-                console.log('loading succeed');                 //加载完成
+                console.log('loading succeed');                         //加载完成
+                image = document.getElementById('music_icon_show');         //绑定图像旋转
+                lyricsForm = document.getElementById('lyrics_box');         //绑定歌词列表
+                lyricsHight = lyricsForm.scrollHeight;
+                //console.log('height...' + lyricsHight);
+                lyricsLists = lyricsForm.children;
+                lyricsCurrent = null;
+                for (let i = 0; i<lyricsLists.length; i++){ lyricsCache.push(Number.parseFloat(lyricsLists[i].id.toString().replace('lyrics_','')));}
+                //for (let [index, elem] of lyricsCache.entries()) { console.log(index, elem); }
                 music.play();
             }
             else{
-                console.log('loading...' + readState);          //加载更新中
+                console.log('loading...' + readState);                  //加载更新中
             }
         }
 
-        if(music.readyState === 4){                             //正常播放
-            image = document.getElementById('music_icon_show');
-
+        if(music.readyState === 4){                                     //正常播放
             if(music.duration){ length = music.duration; }else{ length = 0;}
             temp = Math.trunc(length);
             min = Math.trunc(temp / 60);
@@ -101,12 +112,29 @@ function progressUp( color ){
             buffer_width = buffer / length * 264 + 'px';
             buff_progress.style.width = buffer_width;
 
-            cache = music.currentTime;
+            cache = music.currentTime.toFixed(2);
             if(cache){ played = cache; }else{ played = 0;}
             played_width = played / length * 264 + 'px';
             //console.log("progress width" + pro_width);
             progress.style.width = played_width;
 
+            let index = lyricsCache.findIndex((time) => time > cache);
+            if(index === -1){ index = lyricsCache.length - 1;}else{ index -= 1;}
+            if(lyricsCurrent !== index){
+                lyricsCurrent = index;
+
+                let oldStyle = document.getElementsByClassName('lyrics_current_show');
+                if(oldStyle.length > 0){
+                    oldStyle[0].style.color = '#000000';
+                    oldStyle[0].className = 'lyrics_show';
+                }
+
+                let newStyle = document.getElementById(lyricsLists[lyricsCurrent].id);
+                newStyle.className = 'lyrics_current_show';
+                newStyle.style.color = color;
+
+                lyricsForm.scrollTop = lyricsHight * lyricsCurrent / lyricsCache.length - 150;
+            }
             //console.log('paused: ' + music.paused + '\t played: ' + played + '\t buffer:' + buffer);
 
             temp = Math.trunc(played);

@@ -5,15 +5,15 @@
       "name":"洛天依",
       "color":"#66CCFF",
       "border" : "rgba(102,204,255,0.6)",
-      "musics":"Luo_Tianyi.json",
-      "icon": "src/image/role/洛天依.jpg"
+      "musics":"interface/Luo_Tianyi.json",
+      "icon": "dataset/icon/Role_icon/洛天依.jpg"
     },
     {
       "name":"乐正绫",
       "color":"#EE0000",
       "border" : "rgba(238,0,0,0.6)",
-      "musics": "Yuezheng_Ling.json",
-      "icon": "src/image/role/乐正绫.jpg"
+      "musics": "interface/Yuezheng_Ling.json",
+      "icon": "dataset/icon/Role_icon/乐正绫.jpg"
     }
   ]
 }
