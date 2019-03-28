@@ -133,7 +133,7 @@ function progressUp( color ){
                 newStyle.className = 'lyrics_current_show';
                 newStyle.style.color = color;
 
-                lyricsForm.scrollTop = lyricsHeight * lyricsCurrent / lyricsCache.length - 150;
+                lyricsForm.scrollTop = lyricsHeight * lyricsCurrent / lyricsCache.length - 160;
             }
             //console.log('paused: ' + music.paused + '\t played: ' + played + '\t buffer:' + buffer);
 

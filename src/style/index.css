@@ -20,9 +20,9 @@ body {height: 100%; background-color:lightgoldenrodyellow;background-repeat: no-
 #music_progress_time_show{ height: 40px; width: 90px; margin: auto; border: none; outline: none; background-color: transparent;}
 /* 歌词展示框体 */
 #lyrics_info{ width: 460px; height: 360px; padding: 20px;}
-#lyrics_box{ width: 360px; height: 320px; margin: 20px 50px; font-size:16px; border: none; outline: none; overflow:hidden; resize:none; background-color: transparent; }
-.lyrics_show{align-content: center;}
-.lyrics_current_show{align-content: center;}
+#lyrics_box{ width: 360px; height: 320px; margin: 20px 50px; border: none; outline: none; overflow:hidden; resize:none; background-color: transparent; }
+.lyrics_show{align-content: center; height: 24px; margin: 8px 0;}
+.lyrics_current_show{align-content: center; height: 24px; margin: 8px 0;}
 /*Chrome 滚动条样式设置*/
 #lyrics_box::-webkit-scrollbar          /*滚动条整体部分*/
 {

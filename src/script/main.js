@@ -294,12 +294,14 @@ function loadLyrics( lyrics ){
                 if(lyricsText){
                     let newText = document.createElement('p');
                     newText.id = 'lyrics_' + lyricsTime;
+                    newText.className = 'lyrics_show';
                     newText.innerText = lyricsText;
                     newLyrics.appendChild(newText);
                 }
                 else{
                     let newText = document.createElement('br');
                     newText.id = 'lyrics_' + lyricsTime;
+                    newText.className = 'lyrics_show';
                     newLyrics.appendChild(newText);
                 }
             }
