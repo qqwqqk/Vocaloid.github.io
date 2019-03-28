@@ -2,58 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd59d6e9-64d5-44c3-9a36-8570a41d6269" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/dataset/lyrics/Luo_Tianyi/千年食谱颂.lrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/lyrics/Luo_Tianyi/天行健.lrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/lyrics/Luo_Tianyi/小城书院.lrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/lyrics/Luo_Tianyi/洛阳怀.lrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/lyrics/Luo_Tianyi/眉间不点砂.lrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/lyrics/Luo_Tianyi/齐天.lrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/lyrics/Yuezheng_Ling/三千烛华夜.lrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/lyrics/Yuezheng_Ling/世末歌者.lrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/lyrics/Yuezheng_Ling/九九八十一.lrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/lyrics/Yuezheng_Ling/五重空洞.lrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/lyrics/Yuezheng_Ling/岁月成碑.lrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/lyrics/Yuezheng_Ling/易水诀.lrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/lyrics/Yuezheng_Ling/霜雪千年.lrc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/lyrics/test.json" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/lyrics/Luo_Tianyi/八辈子.lrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/music/Luo_Tianyi/66CCFF.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/music/Luo_Tianyi/新·九九八十一.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/music/Luo_Tianyi/易水诀.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/music/Luo_Tianyi/霜雪千年.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/music/Yuezheng_Ling/六重不忠.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/music/Yuezheng_Ling/四重罪孽.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/music/Yuezheng_Ling/残月雪.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interface/Luo_Tianyi.json" beforeDir="false" afterPath="$PROJECT_DIR$/interface/Luo_Tianyi.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interface/Yuezheng_Ling.json" beforeDir="false" afterPath="$PROJECT_DIR$/interface/Yuezheng_Ling.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interface/role.json" beforeDir="false" afterPath="$PROJECT_DIR$/interface/role.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/icon/66CCFF.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/icon/_title.ico" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/icon/Role_icon/title.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/icon/五重空洞.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/icon/六重不忠.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/icon/四重罪孽.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/icon/新·九九八十一.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/icon/易水诀.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/icon/残月雪.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/icon/洛阳怀.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/icon/眉间不点砂.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/icon/霜雪千年.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/music/66CCFF.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/music/五重空洞.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/music/六重不忠.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/music/四重罪孽.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/music/新·九九八十一.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/music/易水诀.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/music/残月雪.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/music/洛阳怀.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/music/眉间不点砂.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/music/霜雪千年.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/role/乐正绫.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/icon/Role_icon/乐正绫.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/role/洛天依.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/icon/Role_icon/洛天依.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/script/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/script/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/script/playcontrol.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/script/playcontrol.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/style/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/index.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -67,24 +16,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
+            <state relative-caret-position="-438">
               <caret line="10" column="6" lean-forward="true" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="playcontrol.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="playcontrol.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/script/playcontrol.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="572">
-              <caret line="135" column="93" selection-start-line="135" selection-start-column="93" selection-end-line="135" selection-end-column="93" />
+            <state relative-caret-position="198">
+              <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
               <folding>
                 <element signature="n#!!block;n#playClock#0" />
                 <element signature="n#!!block;n#volumeClock#0" />
                 <element signature="n#!!block;n#loopClock#0" />
+                <element signature="n#!!block;n#progressUp#0" />
                 <element signature="n#!!block;n#progressPause#0" />
                 <element signature="n#!!block;n#clickedPlay#0" />
                 <element signature="n#!!block;n#clickPremusic#0" />
@@ -115,15 +65,17 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/script/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="207" column="4" selection-start-line="207" selection-start-column="4" selection-end-line="217" selection-end-column="51" />
+            <state relative-caret-position="220">
+              <caret line="132" column="17" lean-forward="true" selection-start-line="132" selection-start-column="17" selection-end-line="132" selection-end-column="17" />
               <folding>
+                <element signature="e#207#302#0" />
                 <element signature="n#!!block;n#loadImageAsync#0" />
                 <element signature="n#!!block;n#loadAudioAsync#0" />
                 <element signature="n#!!block;n#loadControl#0" />
                 <element signature="n#!!block;n#controlClick#0" />
                 <element signature="n#!!block;n#loadRole#0" />
                 <element signature="n#!!block;n#loadList#0" />
+                <element signature="n#!!block;n#clickList#0" />
                 <element signature="n#!!block;n#loadMusic#0" />
                 <element signature="n#!!block;n#loadLyrics#0" />
               </folding>
@@ -288,15 +240,15 @@
       <workItem from="1553496067802" duration="17240000" />
       <workItem from="1553562015422" duration="28196000" />
       <workItem from="1553646616454" duration="27210000" />
-      <workItem from="1553731897903" duration="3443000" />
+      <workItem from="1553731897903" duration="4111000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="194758000" />
+    <option name="totallyTimeSpent" value="195426000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1394" height="916" extended-state="7" />
+    <frame x="-8" y="-8" width="1394" height="916" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -341,6 +293,7 @@
             <element signature="n#!!block;n#playClock#0" />
             <element signature="n#!!block;n#volumeClock#0" />
             <element signature="n#!!block;n#loopClock#0" />
+            <element signature="n#!!block;n#progressUp#0" />
             <element signature="n#!!block;n#progressPause#0" />
             <element signature="n#!!block;n#clickedPlay#0" />
             <element signature="n#!!block;n#clickPremusic#0" />
@@ -358,12 +311,14 @@
         <state relative-caret-position="2134">
           <caret line="97" column="22" lean-forward="true" selection-start-line="97" selection-start-column="22" selection-end-line="97" selection-end-column="22" />
           <folding>
+            <element signature="e#207#302#0" />
             <element signature="n#!!block;n#loadImageAsync#0" />
             <element signature="n#!!block;n#loadAudioAsync#0" />
             <element signature="n#!!block;n#loadControl#0" />
             <element signature="n#!!block;n#controlClick#0" />
             <element signature="n#!!block;n#loadRole#0" />
             <element signature="n#!!block;n#loadList#0" />
+            <element signature="n#!!block;n#clickList#0" />
             <element signature="n#!!block;n#loadMusic#0" />
             <element signature="n#!!block;n#loadLyrics#0" />
           </folding>
@@ -389,12 +344,14 @@
         <state relative-caret-position="44">
           <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
           <folding>
+            <element signature="e#207#302#0" />
             <element signature="n#!!block;n#loadImageAsync#0" />
             <element signature="n#!!block;n#loadAudioAsync#0" />
             <element signature="n#!!block;n#loadControl#0" />
             <element signature="n#!!block;n#controlClick#0" />
             <element signature="n#!!block;n#loadRole#0" />
             <element signature="n#!!block;n#loadList#0" />
+            <element signature="n#!!block;n#clickList#0" />
             <element signature="n#!!block;n#loadMusic#0" />
             <element signature="n#!!block;n#loadLyrics#0" />
           </folding>
@@ -448,12 +405,14 @@
         <state relative-caret-position="1122">
           <caret line="51" column="33" lean-forward="true" selection-start-line="51" selection-start-column="33" selection-end-line="51" selection-end-column="33" />
           <folding>
+            <element signature="e#207#302#0" />
             <element signature="n#!!block;n#loadImageAsync#0" />
             <element signature="n#!!block;n#loadAudioAsync#0" />
             <element signature="n#!!block;n#loadControl#0" />
             <element signature="n#!!block;n#controlClick#0" />
             <element signature="n#!!block;n#loadRole#0" />
             <element signature="n#!!block;n#loadList#0" />
+            <element signature="n#!!block;n#clickList#0" />
             <element signature="n#!!block;n#loadMusic#0" />
             <element signature="n#!!block;n#loadLyrics#0" />
           </folding>
@@ -645,39 +604,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-438">
+          <caret line="10" column="6" lean-forward="true" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/script/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="207" column="4" selection-start-line="207" selection-start-column="4" selection-end-line="217" selection-end-column="51" />
+        <state relative-caret-position="220">
+          <caret line="132" column="17" lean-forward="true" selection-start-line="132" selection-start-column="17" selection-end-line="132" selection-end-column="17" />
           <folding>
+            <element signature="e#207#302#0" />
             <element signature="n#!!block;n#loadImageAsync#0" />
             <element signature="n#!!block;n#loadAudioAsync#0" />
             <element signature="n#!!block;n#loadControl#0" />
             <element signature="n#!!block;n#controlClick#0" />
             <element signature="n#!!block;n#loadRole#0" />
             <element signature="n#!!block;n#loadList#0" />
+            <element signature="n#!!block;n#clickList#0" />
             <element signature="n#!!block;n#loadMusic#0" />
             <element signature="n#!!block;n#loadLyrics#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/script/playcontrol.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="135" column="93" selection-start-line="135" selection-start-column="93" selection-end-line="135" selection-end-column="93" />
-          <folding>
-            <element signature="n#!!block;n#playClock#0" />
-            <element signature="n#!!block;n#volumeClock#0" />
-            <element signature="n#!!block;n#loopClock#0" />
-            <element signature="n#!!block;n#progressPause#0" />
-            <element signature="n#!!block;n#clickedPlay#0" />
-            <element signature="n#!!block;n#clickPremusic#0" />
-            <element signature="n#!!block;n#clickNextmusic#0" />
-            <element signature="n#!!block;n#clickLoop#0" />
-            <element signature="n#!!block;n#clickVolume#0" />
-            <element signature="n#!!block;n#clickVolumeadjust#0" />
-            <element signature="n#!!block;n#clickProgressadjust#0" />
           </folding>
         </state>
       </provider>
@@ -694,10 +642,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/src/script/playcontrol.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="6" lean-forward="true" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+        <state relative-caret-position="198">
+          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
+          <folding>
+            <element signature="n#!!block;n#playClock#0" />
+            <element signature="n#!!block;n#volumeClock#0" />
+            <element signature="n#!!block;n#loopClock#0" />
+            <element signature="n#!!block;n#progressUp#0" />
+            <element signature="n#!!block;n#progressPause#0" />
+            <element signature="n#!!block;n#clickedPlay#0" />
+            <element signature="n#!!block;n#clickPremusic#0" />
+            <element signature="n#!!block;n#clickNextmusic#0" />
+            <element signature="n#!!block;n#clickLoop#0" />
+            <element signature="n#!!block;n#clickVolume#0" />
+            <element signature="n#!!block;n#clickVolumeadjust#0" />
+            <element signature="n#!!block;n#clickProgressadjust#0" />
+          </folding>
         </state>
       </provider>
     </entry>

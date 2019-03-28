@@ -59,7 +59,7 @@ function progressUp( color ){
     let lyricsLists = null;
     let lyricsCache = [];
     let lyricsCurrent = null;
-    let lyricsHight = null;
+    let lyricsHeight = null;
     let image = null;
     let buffer = null;
     let played = null;
@@ -77,7 +77,7 @@ function progressUp( color ){
     progressClock = setInterval(function(){
         if(music.readyState < readState){                               //切换音乐
             readState = 0; music.pause();
-            //console.log('loading...' + readState);                    //加载更新中
+            console.log('loading...' + readState);                    //加载更新中
             time.value = '00:00 / 00:00';
         }
 
@@ -87,7 +87,7 @@ function progressUp( color ){
                 console.log('loading succeed');                         //加载完成
                 image = document.getElementById('music_icon_show');         //绑定图像旋转
                 lyricsForm = document.getElementById('lyrics_box');         //绑定歌词列表
-                lyricsHight = lyricsForm.scrollHeight;
+                lyricsHeight = lyricsForm.scrollHeight;
                 //console.log('height...' + lyricsHight);
                 lyricsLists = lyricsForm.children;
                 lyricsCurrent = null;
@@ -133,7 +133,7 @@ function progressUp( color ){
                 newStyle.className = 'lyrics_current_show';
                 newStyle.style.color = color;
 
-                lyricsForm.scrollTop = lyricsHight * lyricsCurrent / lyricsCache.length - 150;
+                lyricsForm.scrollTop = lyricsHeight * lyricsCurrent / lyricsCache.length - 150;
             }
             //console.log('paused: ' + music.paused + '\t played: ' + played + '\t buffer:' + buffer);
 
