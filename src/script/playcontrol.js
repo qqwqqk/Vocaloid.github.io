@@ -77,8 +77,8 @@ function progressUp( color ){
     progressClock = setInterval(function(){
         if(music.readyState < readState){                               //切换音乐
             readState = 0; music.pause();
-            console.log('loading...' + readState);                    //加载更新中
-            document.getElementById('music_title_show').value = document.getElementById('music_title_show').value + '     Loading...';
+            console.log('loading...' + readState);                      //加载更新中
+            document.getElementById('loading_show').setAttribute('type','text');
             time.value = '00:00 / 00:00';
         }
 
@@ -86,11 +86,11 @@ function progressUp( color ){
             readState = music.readyState;
             if(music.readyState === 4  && music.paused){
                 console.log('loading succeed');                         //加载完成
-                document.getElementById('music_title_show').value = document.getElementById('music_title_show').value.replace('     Loading...','');
                 image = document.getElementById('music_icon_show');         //绑定图像旋转
                 lyricsForm = document.getElementById('lyrics_box');         //绑定歌词列表
+                document.getElementById('loading_show').setAttribute('type','hidden');
                 lyricsHeight = lyricsForm.scrollHeight;
-                //console.log('height...' + lyricsHight);
+                //console.log('height...' + lyricsHeight);
                 lyricsLists = lyricsForm.children;
                 lyricsCurrent = null;
                 for (let i = 0; i<lyricsLists.length; i++){ lyricsCache.push(Number.parseFloat(lyricsLists[i].id.toString().replace('lyrics_','')));}
@@ -99,7 +99,7 @@ function progressUp( color ){
             }
             else{
                 console.log('loading...' + readState);                  //加载更新中
-                document.getElementById('music_title_show').value = document.getElementById('music_title_show').value + '     Loading...';
+                document.getElementById('loading_show').setAttribute('type','text');
             }
         }
 

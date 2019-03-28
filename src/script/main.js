@@ -247,7 +247,8 @@ function loadMusic( music, lyrics, icon, name, color){
     let oldName = document.getElementById('music_title');
     oldName.replaceChild(newName,oldName.children[0]);
 
-    loadLyrics(lyrics);                                    //歌词加载
+    document.getElementById('loading_show').style.color = color;    //添加loading样式
+    loadLyrics(lyrics);                                             //歌词加载
 
     newMusic.addEventListener('ended',function () {     //播放结束的监听函数
         let status = loopStatus.status;
