@@ -21,7 +21,7 @@ module.exports = {
     plugins: [
         new htmlWebpackPlugin({
             template: __dirname + "/src/index_tmp.html",
-            favicon: "./src/image/usericon.ico",
+            favicon: "./src/image/Vocaloid.ico",
             filename:'index.html',                            //根目录入口页面名称
             title: 'demo',
             inject: 'true',
@@ -29,7 +29,7 @@ module.exports = {
         }),
         new htmlWebpackPlugin({
             template: __dirname + "/src/index_tmp.html",
-            favicon: "./src/image/usericon.ico",
+            favicon: "./src/image/Vocaloid.ico",
             filename:'error.html',                            //根目录入口页面名称
             title: 'error',
             inject: 'true',

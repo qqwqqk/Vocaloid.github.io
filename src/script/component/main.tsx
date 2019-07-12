@@ -2,26 +2,39 @@ import * as React from "react";
 import { connect } from "react-redux";
 
 import { MainState } from '../store';
-import { ListState, ShowState } from '../store/types';
-import { setItem, getItem, getList } from '../store/actions';
+import { DiscState, RoleState, PlayState, VolumeState } from '../store/types';
+import { 
+  setRole,
+  setMusic, addMusic, delMusic, 
+  setPlay, onPlay, offPlay,
+  setVolume, onVolume, offVolume } from '../store/actions';
 
 import { Layout, Row, Col, Icon } from 'antd';
 
 import { InfoItem } from './infoitem';
-import { CardItem } from './carditem';
-import { CardList } from './cardlist';
+import { ShowItem } from './showitem';        
+import { CtrlItem } from './ctrlitem';
 
 import '../../style/index.css';
 
 const { Header, Content, Footer } = Layout;
 
 interface MainProps {
-  listState: ListState;
-  showState: ShowState;
-  showLists: ListState;
-  setItem: typeof setItem;
-  getItem: typeof getItem;
-  getList: typeof getList;
+  discState: DiscState;
+  roleState: RoleState;
+  playState: PlayState;
+  volumeState: VolumeState;
+  rolediscs: DiscState;
+  setMusic: typeof setMusic;
+  addMusic: typeof addMusic;
+  delMusic: typeof delMusic;
+  setRole: typeof setRole;
+  setPlay: typeof setPlay;
+  onPlay: typeof onPlay;
+  offPlay: typeof offPlay;
+  setVolume: typeof setVolume;
+  onVolume: typeof onVolume;
+  offVolume: typeof offVolume;
 }
 
 class Main extends React.Component<MainProps>{
@@ -30,34 +43,33 @@ class Main extends React.Component<MainProps>{
   constructor(props:any) {
     super(props);
     // console.log("main window loading");
-    setTimeout(()=>{ 
-      this.props.setItem(0);
+    setTimeout(()=>{
+      if(this.props.roleState.lists.length > 0){
+        this.props.setRole(this.props.roleState.lists[0].name);
+      }
+      if(this.props.rolediscs.lists.length > 0){
+        this.props.setMusic(this.props.rolediscs.lists[0].key);
+      }
       this.setState({ progress: 100 });
     }, 0);
   }
 
-  setSelect = (key: string) => {
-    const lists = this.props.listState.lists;
-    for(let index = 0; index < lists.length; index++){
-      if(lists[index].name === key){
-        this.props.setItem(index); break;
-      }
-    }
-  }
+  setMusic = (key: string) => { this.props.setMusic(key); }
+  setRole = (name: string) => { this.props.setRole(name); }
 
   render(){
     if(this.state.progress > 99){
       // console.log(this.state.showState);
       return (
         <Layout className="theme">
-          <Header style={{ background: 'transparent', margin: '0 12%'}}>
-            { InfoItem(this.props.showLists) }
+          <Header className='layout-header'>
+            { InfoItem({disclists: this.props.rolediscs.lists, rolelists: this.props.roleState.lists}) }
           </Header>
-          <Content style={{ background: 'transparent' , margin: '0 24%'}}>      
-            { CardItem(this.props.showLists) }
+          <Content className='layout-content'>      
+            { ShowItem({disclists: this.props.rolediscs.lists}) }
           </Content>
-          <Footer style={{ background: 'transparent' , margin: '0 18%'}}>
-            { CardList({ lists: this.props.showLists.lists, setSelect: this.setSelect }) }
+          <Footer className='layout-footer'>
+            { CtrlItem({disclists: this.props.rolediscs.lists}) }
           </Footer>
         </Layout>
       )
@@ -81,12 +93,14 @@ class Main extends React.Component<MainProps>{
 }
 
 const mapStateToProps = (state: MainState) =>({
-  listState: state.lists,
-  showState: state.showtype,
-  showLists: state.showlists
+  discState: state.disc,
+  roleState: state.role,
+  playState: state.play,
+  volumeState: state.volume,
+  rolediscs: state.roledisc
 })
 
 export default connect(
   mapStateToProps,
-  { setItem, getItem, getList }
+  { setMusic, addMusic, delMusic, setRole, setPlay, onPlay, offPlay, setVolume, onVolume, offVolume }
 )(Main);

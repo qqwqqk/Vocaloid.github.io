@@ -1,9 +1,9 @@
 import { createStore, combineReducers } from "redux";
 
-import { listReducer, showReducer, getShowList } from "./reducers";
+import { discReducer, roleReducer, playReducer, volumeReducer, getRoleDisc } from "./reducers";
 
-const showlist = () => ( getShowList() )
-const rootReducer = combineReducers({ lists: listReducer, showtype: showReducer, showlists: showlist });
+const roledisc = () => ( getRoleDisc() )
+const rootReducer = combineReducers({ disc: discReducer, role: roleReducer, play: playReducer, volume:volumeReducer, roledisc: roledisc });
 
 export type MainState = ReturnType<typeof rootReducer>;
 

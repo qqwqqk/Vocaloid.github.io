@@ -1,15 +1,19 @@
 /*设置样式全局变量*/
 :root{
-    --background-color:#888888;
-    --font-color:#888888;
-    --font-size-show: 30px;
-    --font-size-btn: 18px;
-    --color-fire: #EE0000;
-    --color-water: #66CCFF;
-    --color-thunder: #FFB61E;
-    --color-wind: #39C5BB;
-    --color-light: #FFFBF0;
-    --color-dark: #9999FF;
+  --btn-size: 1vw;
+  --font-size: 1.25vw;
+  --ctrl-size: 2vw;
+  --theme-color:#39C5BB;
+  --white-mask1: rgba(255,255,255,0.2);
+  --white-mask2: rgba(255,255,255,0.4);
+  --white-mask3: rgba(255,255,255,0.6);
+  --white-mask4: rgba(255,255,255,0.8);
+  --white-mask5: rgba(255,255,255,1);
+  --black-mask1: rgba(0,0,0,0.2);
+  --black-mask2: rgba(0,0,0,0.4);
+  --black-mask3: rgba(0,0,0,0.6);
+  --black-mask4: rgba(0,0,0,0.8);
+  --black-mask5: rgba(0,0,0,1);
 }
 
 /* 引入antd样式*/
@@ -22,41 +26,96 @@
 }
 /* 滚动槽 */
 ::-webkit-scrollbar-track {
-    border-radius: 10px;
-    background-color: transparent;
+  border-radius: 10px;
+  background-color: transparent;
 }
 /* 滚动条滑块 */
 ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background: var(--background-color);
+  border-radius: 10px;
+  background: var(--theme-color);
 }
 
 /* index.css */
 body{
-  background-color: var(--color-water);
+  background-color: var(--theme-color);
 }
 .theme{
-  background-color: var(--color-water);
+  background-color: var(--theme-color);
 }
 
-.theme .showitem {
+.theme .layout-header{
+  background: var(--white-mask3);
+  margin: 0 12%;
+  border-radius: 0 0 30px 30px;
+}
+
+.theme .layout-header .ant-breadcrumb{
+  color: var(--black-mask5);
+}
+
+.theme .layout-header .ant-breadcrumb > span:last-child{
+  color: var(--black-mask5);
+}
+
+.theme .layout-header .vsinger{
+  color: var(--theme-color);
+}
+
+.theme .layout-header .vsinger:hover{
+  color: var(--theme-color);
+}
+
+.theme .layout-content{
+  background: transparent;
+  margin: 0 18%;
+}
+
+.theme .layout-content .showitem {
   margin: 2% 0;
 }
 
-.theme .showitem .ant-card{
-  border: 10px solid rgba(220,220,220,0.5);
+.theme .layout-content .showitem .ant-card{
+  margin: 4%;
+  border: 10px solid var(--white-mask3);
 }
 
-.theme .showlist .ant-card{
-  margin: auto;
-  overflow: hidden;
+.theme .layout-content .showitem .ant-list{
+  margin: 4%;
+}
+
+.theme .layout-content .showitem .ant-list .ant-list-header{
+  border: none;
   text-align: center;
+  background: var(--white-mask4);
+  font-size: var(--font-size);
+  color: var(--black-mask5);
   border-radius: 20px;
-  border: 5px solid rgba(220,220,220,0.5);
+  margin: 12px 2px;
 }
 
-.theme .showlist .rank-0{ padding: 0; }
-.theme .showlist .rank-1{ padding: 1%; }
-.theme .showlist .rank-2{ padding: 2%; }
+.theme .layout-content .showitem .ant-list .ant-list-item{
+  border: none;
+  padding: 4px 0;
+}
 
-.theme .showlist .fontsize{ font-size: 1.25vw; }
+.theme .layout-content .showitem .ant-list .ant-list-item .ant-btn{
+  width: 90%;
+  color: var(--black-mask5);
+  background-color: var(--white-mask3);
+  border: 2px outset var(--theme-color);
+  margin: auto;
+}
+
+.theme .layout-content .showitem .ant-list .ant-list-item .musicitem{
+  font-size: var(--btn-size);
+}
+
+.theme .layout-footer{
+  background: var(--white-mask2);
+  margin: 0px 18%;
+  border-radius: 20px;
+}
+
+.theme .layout-footer .ctrlmenu .ctrlitem{
+  font-size: var(--ctrl-size);
+}

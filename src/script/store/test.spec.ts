@@ -1,16 +1,21 @@
-import { musicInit, discReducer, roleReducer, getRoleDisc } from './reducers';
+import { musicInit, discReducer, roleReducer, playReducer, volumeReducer, getRoleDisc } from './reducers';
 
+/*  测试音乐初始化
 test('music init test', ()=>{
-  const name = 'test';
-  const role = '测试';
+  const name = '千本桜';
+  const role = '初音ミク';
   const output = { 
-    key: 'test%u6D4B%u8BD5', name: 'test', role: '测试', current: false,
+    key: '%u5343%u672C%u685C%u521D%u97F3%u30DF%u30AF', name: '千本桜', role: '初音ミク', current: false,
     music: '',
-    image: '',
+    image: 'https://qqwqqk.github.io/ResourceRequest.github.io/resource/IMG/vocaloid/music/千本桜.jpg',
     lyric: ''
   };
   expect(musicInit(name, role)).toEqual(output);
 });
+*/
+
+
+/*
 
 describe('discReducer test',()=>{
   it('set music test',()=>{
@@ -57,9 +62,17 @@ describe('discReducer test',()=>{
 
 describe('roleReducer test',()=>{
   it('set role test', ()=>{
-    const state = { name: ''};
-    const output = { name: 'test'};
-    expect(roleReducer(state,{type:'SET_ROLE', name:'test'})).toEqual(output);
+    const state = { lists: [
+      { name: 'a', color:'', image: '', current: false },
+      { name: 'b', color:'', image: '', current: false },
+      { name: 'c', color:'', image: '', current: false },
+    ]};
+    const output = { lists: [
+      { name: 'a', color:'', image: '', current: false },
+      { name: 'b', color:'', image: '', current: true },
+      { name: 'c', color:'', image: '', current: false },
+    ]};
+    expect(roleReducer(state,{type:'SET_ROLE', name:'b'})).toEqual(output);
   })
 })
 
@@ -69,9 +82,10 @@ test('get role disc test',()=>{
     { key: '2', name: '', role: '', current: false, music: '', image: '', lyric: ''},
     { key: '3', name: '', role: 'test', current: false, music: '', image: '', lyric: ''}
   ]};
-  const role = {
-    name : 'test'
-  };
+  const role = { lists: [
+    { name: '', color:'', current: false },
+    { name: 'test', color:'', current: true },
+  ]};
   const output = { lists: [
     { key: '1', name: '', role: 'test', current: false, music: '', image: '', lyric: ''},
     { key: '3', name: '', role: 'test', current: false, music: '', image: '', lyric: ''}
@@ -79,33 +93,40 @@ test('get role disc test',()=>{
   expect(getRoleDisc(disc,role)).toEqual(output);
 })
 
-/*
+describe('playReducer test',()=>{
+  it('set play state test', ()=>{
+    const state = { state: 'pause'};
+    const output = { state: 'play'};
+    expect(playReducer(state,{type:'SET_PLAY', state:'play'})).toEqual(output);
+  })
+})
 
-test('set item of list test', ()=>{
-  const state = { lists:[
-    { rank: 0, name: '', href:'', image: '' },
-    { rank: 0, name: '', href:'', image: '' },
-    { rank: 0, name: '', href:'', image: '' },
-    { rank: 0, name: '', href:'', image: '' },
-    { rank: 0, name: '', href:'', image: '' },
-    { rank: 0, name: '', href:'', image: '' },
-    { rank: 0, name: '', href:'', image: '' }
-  ]};
-  const output = { lists:[
-    { rank: 3, name: '', href:'', image: '' },
-    { rank: -3, name: '', href:'', image: '' },
-    { rank: -2, name: '', href:'', image: '' },
-    { rank: -1, name: '', href:'', image: '' },
-    { rank: 0, name: '', href:'', image: '' },
-    { rank: 1, name: '', href:'', image: '' },
-    { rank: 2, name: '', href:'', image: '' }
-  ]};
-  expect(listReducer(state ,{ type: 'SET_ITEM' , key: 4 })).toEqual(output);
-});
+describe('volumeReducer test',()=>{
+  it('set volume value test', ()=>{
+    const state = { mute: false, value: 27 };
+    const output = { mute: false, value: 56 };
+    expect(volumeReducer(state,{type:'SET_VOLUME', value:56})).toEqual(output);
+  })
 
-test('set show type test', ()=>{
-  const state: ShowState = { type: 'GET_ITEM' };
-  const output = { type: 'GET_LIST' };
-  expect(showReducer(state ,{ type: 'GET_LIST' })).toEqual(output);
-});
+  it('set volume value test', ()=>{
+    const state = { mute: true, value: 27 };
+    const output = { mute: false, value: 56 };
+    expect(volumeReducer(state,{type:'SET_VOLUME', value:56})).toEqual(output);
+  })
+
+  it('set volume on test', ()=>{
+    const state = { mute: true, value: 60 };
+    const output = { mute: false, value: 60 };
+    expect(volumeReducer(state,{type:'ON_VOLUME'})).toEqual(output);
+  })
+
+  it('set volume off test', ()=>{
+    const state = { mute: false, value: 60 };
+    const output = { mute: true, value: 60 };
+    expect(volumeReducer(state,{type:'OFF_VOLUME'})).toEqual(output);
+  })
+})
+
+
+
 */
