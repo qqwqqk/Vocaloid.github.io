@@ -4,16 +4,19 @@ import { Music } from '../store/types';
 
 interface ShowProps{
   disclists: Array<Music>;
+  setMusic: (key: string) => void;
 }
 
 export const ShowItem = (props: ShowProps) => {
+  const setMusic = props.setMusic;
+
   let music: Music = { key: '', name: '', role: '', current: false, music: '', image: '', lyric: ''};
   for(let item of props.disclists){ if(item.current){ music = item; break; } };
 
   if(music.current){
     return (
       <Row className='showitem'>
-        <Col span={18}>
+        <Col span={18} className='discshow'>
           <Card
             bodyStyle={{height:0, border:0, padding:0}}
             cover={
@@ -24,15 +27,15 @@ export const ShowItem = (props: ShowProps) => {
             }
           />
         </Col>
-        <Col span={6}>
+        <Col span={6} className='disclist'>
           <List 
-            className='disclist'
-            header={ <div>{music.role}</div> }
+            itemLayout="vertical"
             dataSource={props.disclists}
             renderItem={item => (
               <List.Item key={item.key}>
                 <Button type="primary" 
-                  onClick={()=>{console.log(item.key)}}
+                  className={item.current ? 'current':''}
+                  onClick={()=>{setMusic(item.key)}}
                 >
                   <span className='musicitem'>{item.name}</span>
                 </Button>

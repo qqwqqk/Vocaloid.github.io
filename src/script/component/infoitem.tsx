@@ -5,16 +5,18 @@ import { Row, Col, Avatar, Breadcrumb, Icon, Dropdown, Menu } from 'antd';
 interface InfoProps{
   disclists: Array<Music>;
   rolelists: Array<Role>;
+  setRole: (name: string) => void;
 }
 
 export const InfoItem = (props: InfoProps) => {
+  const setRole = props.setRole;
   let role: Role = { name: '', color:'', image: '', current: false };
   let music: Music = { key: '', name: '', role: '', current: false, music: '', image: '', lyric: ''};
   
   for(let item of props.rolelists){ if(item.current){ role = item; break; } };
   for(let item of props.disclists){ if(item.current){ music = item; break; } };
 
-  console.log(role,music);
+  // console.log(role,music);
 
   if(role.current && music.current){
     const url: string = "https://github.com/qqwqqk/Vocaloid.github.io";
@@ -22,7 +24,7 @@ export const InfoItem = (props: InfoProps) => {
 
     const menuitems = props.rolelists.map((val)=>{
       return ( 
-        <Menu.Item key={val.name}>
+        <Menu.Item key={val.name} onClick={()=>{setRole(val.name)}}>
           <span style={{color: val.color}}> {val.name} </span>
         </Menu.Item> )
     });

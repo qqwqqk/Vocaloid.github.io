@@ -1,4 +1,4 @@
-import { musicInit, discReducer, roleReducer, playReducer, volumeReducer, getRoleDisc } from './reducers';
+import { musicInit, discReducer, roleReducer, playReducer, volumeReducer } from './reducers';
 
 /*  测试音乐初始化
 test('music init test', ()=>{
@@ -74,23 +74,6 @@ describe('roleReducer test',()=>{
     ]};
     expect(roleReducer(state,{type:'SET_ROLE', name:'b'})).toEqual(output);
   })
-})
-
-test('get role disc test',()=>{
-  const disc = { lists: [
-    { key: '1', name: '', role: 'test', current: false, music: '', image: '', lyric: ''},
-    { key: '2', name: '', role: '', current: false, music: '', image: '', lyric: ''},
-    { key: '3', name: '', role: 'test', current: false, music: '', image: '', lyric: ''}
-  ]};
-  const role = { lists: [
-    { name: '', color:'', current: false },
-    { name: 'test', color:'', current: true },
-  ]};
-  const output = { lists: [
-    { key: '1', name: '', role: 'test', current: false, music: '', image: '', lyric: ''},
-    { key: '3', name: '', role: 'test', current: false, music: '', image: '', lyric: ''}
-  ]};
-  expect(getRoleDisc(disc,role)).toEqual(output);
 })
 
 describe('playReducer test',()=>{

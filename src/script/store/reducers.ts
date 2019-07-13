@@ -117,7 +117,7 @@ export function volumeReducer(
   }
 }
 
-export const getRoleDisc = (
+const getRoleDisc = (
   lists = listState,
   roles = roleState
 ): DiscState => {
