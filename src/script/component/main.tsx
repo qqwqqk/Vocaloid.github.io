@@ -34,7 +34,7 @@ interface MainProps {
 
 class Main extends React.Component<MainProps>{
   state = { 
-    progress: 0,
+    isReady: false,
     volumestate: { mute: false, value: 60},
     rolediscs:{ lists:[{ key: '', name: '', role: '', current: false, music: '', image: '', lyric: ''}] },
     music: document.createElement('audio')
@@ -45,15 +45,9 @@ class Main extends React.Component<MainProps>{
     // console.log("main window loading");
     setTimeout(()=>{
       if(this.props.roleState.lists.length > 0){
-        this.props.setRole(this.props.roleState.lists[0].name);
+        this.setRole(this.props.roleState.lists[0].name);
       }
-      const rolediscs = this.getRoleDisc();
-      const music = document.createElement('audio');
-      if(rolediscs.lists.length > 0){
-        this.props.setMusic(rolediscs.lists[0].key);
-        music.src = rolediscs.lists[0].music;
-      }
-      this.setState({ progress: 100, rolediscs, music });
+      this.setState({ isReady: true });
     }, 0);
   }
 
@@ -65,20 +59,34 @@ class Main extends React.Component<MainProps>{
     return {lists: roledisc}
   }
 
-  setMusic = (key: string) => { this.props.setMusic(key); }
+  setMusic = (key: string) => { 
+    this.props.setMusic(key);
+    for(let val of this.state.rolediscs.lists){
+      if(val.current){
+        this.props.setMusic(val.key);
+        this.state.music.src = val.music;
+        this.state.music.load();
+        if(this.props.playState.pause){this.state.music.pause();}
+        else{this.state.music.play();}
+      }
+    }
+
+  }
   setRole = (name: string) => { 
+    this.setPlay('off');
     this.props.setRole(name);
     // console.log(this.props.discState, this.props.roleState, this.state.rolediscs);
     for(let item of this.props.roleState.lists){
       if(item.current){ document.body.style.setProperty('--theme-color',item.color); break; }
     }
+
     const rolediscs = this.getRoleDisc();
-      const music = document.createElement('audio');
-      if(rolediscs.lists.length > 0){
-        this.props.setMusic(rolediscs.lists[0].key);
-        music.src = rolediscs.lists[0].music;
-      }
-      this.setState({ rolediscs, music });
+    const music = document.createElement('audio');
+    if(rolediscs.lists.length > 0){
+      this.props.setMusic(rolediscs.lists[0].key);
+      music.src = rolediscs.lists[0].music;
+    }
+    this.setState({ rolediscs, music });
   }
   setPlay = (type: string):void => {
     switch(type){
@@ -102,7 +110,7 @@ class Main extends React.Component<MainProps>{
   };
 
   render(){
-    if(this.state.progress > 99){
+    if(this.state.isReady){
       // console.log(this.state.showState);
       return (
         <Layout className="theme">
@@ -115,6 +123,7 @@ class Main extends React.Component<MainProps>{
           <Footer className='layout-footer'>
             { 
               CtrlItem({
+                Music: this.state.music,
                 disclists: this.state.rolediscs.lists,
                 playstate: this.props.playState,
                 volumestate: this.state.volumestate,

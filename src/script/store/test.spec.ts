@@ -1,5 +1,23 @@
 import { musicInit, discReducer, roleReducer, playReducer } from './reducers';
 
+/* 时间转换测试
+const toTime = (timestamp: number):string => {
+  const integer = Math.trunc(timestamp);
+  const min = Math.trunc(integer / 60).toString().padStart(2,'0');
+  const sec = Math.trunc(integer % 60).toString().padStart(2,'0');
+  const msd = Math.trunc(100 * (timestamp - integer)).toString().padStart(2,'0');
+  const time = min + ':' + sec + '.' + msd;
+  return time;
+}
+
+test('to time test',()=>{
+  const timestamp = 123.4;
+  const output = '02:03.40'
+  expect(toTime(timestamp)).toEqual(output);
+})
+*/
+
+
 /*  测试音乐初始化
 test('music init test', ()=>{
   const name = '千本桜';

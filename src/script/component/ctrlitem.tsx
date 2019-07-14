@@ -5,6 +5,7 @@ import { Music, PlayState } from '../store/types';
 interface VolumeState{ mute: boolean; value: number; };
 
 interface ShowProps{
+  Music: HTMLAudioElement;
   disclists: Array<Music>;
   playstate: PlayState;
   volumestate: VolumeState;
@@ -17,6 +18,14 @@ export const CtrlItem = (props: ShowProps) => {
   let keyIndex = 0;
   for(let index = 0; index < props.disclists.length; index++){
     if(props.disclists[index].current){ keyIndex = index; break;}
+  }
+
+  const toTime = (timestamp: number):string => {
+    const integer = Math.trunc(timestamp);
+    const min = Math.trunc(integer / 60).toString().padStart(2,'0');
+    const sec = Math.trunc(integer % 60).toString().padStart(2,'0');
+    const time = min + ':' + sec;
+    return time;
   }
 
   const preIcon = () => {
@@ -71,13 +80,13 @@ export const CtrlItem = (props: ShowProps) => {
       <Col span={2}> { nextIcon() } </Col>
       <Col span={10}>
         <div className='ctrlslider'>
-          <Slider defaultValue={20} tooltipVisible={false}/>
+          <Slider defaultValue={Math.trunc(100 * props.Music.currentTime / props.Music.duration)} tooltipVisible={false}/>
         </div>
       </Col>
       <Col span={4}>
         <Breadcrumb> 
-          <Breadcrumb.Item>3:45</Breadcrumb.Item>
-          <Breadcrumb.Item>4:30</Breadcrumb.Item> 
+          <Breadcrumb.Item>{toTime(props.Music.currentTime)}</Breadcrumb.Item>
+          <Breadcrumb.Item>{toTime(props.Music.duration)}</Breadcrumb.Item> 
         </Breadcrumb>
       </Col>
       <Col span={2}> { loopIcon() } </Col>
