@@ -1,4 +1,4 @@
-import { musicInit, discReducer, roleReducer, playReducer, volumeReducer } from './reducers';
+import { musicInit, discReducer, roleReducer, playReducer } from './reducers';
 
 /*  测试音乐初始化
 test('music init test', ()=>{

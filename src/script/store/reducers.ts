@@ -1,7 +1,7 @@
 import { 
-  Music, Role, DiscState, RoleState, PlayState, VolumeState,
-  MusicActionType, RoleActionType, PlayActionType, VolumeActionType,
-  SET_MUSIC, ADD_MUSIC, DEL_MUSIC, SET_ROLE, SET_PLAY, ON_PLAY, OFF_PLAY, SET_VOLUME, ON_VOLUME, OFF_VOLUME,
+  Music, Role, DiscState, RoleState, PlayState,
+  MusicActionType, RoleActionType, PlayActionType,
+  SET_MUSIC, ADD_MUSIC, DEL_MUSIC, SET_ROLE, SET_PLAY, ON_PLAY, OFF_PLAY,
 } from "./types";
 
 export const musicInit = (name:string ='', role:string = ''): Music => {
@@ -25,9 +25,9 @@ const listState: DiscState = {
   lists: [
     musicInit('ワールドイズマイン','初音ミク'), musicInit('千本桜','初音ミク'), 
     musicInit('恋は戦争','初音ミク'), musicInit('嘘つきのパレード','初音ミク'), 
-    musicInit('霜雪千年','乐正绫'), musicInit('易水诀','乐正绫'), 
+    musicInit('易水诀','乐正绫'), musicInit('霜雪千年','乐正绫'), 
     musicInit('三千烛华夜','乐正绫'), musicInit('世末歌者','乐正绫'), 
-    musicInit('小城书院','洛天依'), musicInit('眉间不点砂','洛天依'), 
+    musicInit('眉间不点砂','洛天依'), musicInit('小城书院','洛天依'), 
     musicInit('洛阳怀','洛天依'), musicInit('八辈子','洛天依'), 
   ]
 };
@@ -38,7 +38,6 @@ const roleState: RoleState = {
   ]
 };
 const playState: PlayState = { pause: true, loop: 'single' };
-const volumeState: VolumeState = { mute: false, value: 60 };
 
 export function discReducer(
   state = listState,
@@ -99,38 +98,4 @@ export function playReducer(
     default:
       return state;
   }
-}
-
-export function volumeReducer(
-  state = volumeState,
-  action: VolumeActionType
-): VolumeState {
-  switch(action.type){
-    case SET_VOLUME:
-      return { mute: false, value: action.value};
-    case ON_VOLUME:
-      state.mute = false; return state;
-    case OFF_VOLUME:
-      state.mute = true; return state;
-    default:
-      return state;
-  }
-}
-
-const getRoleDisc = (
-  lists = listState,
-  roles = roleState
-): DiscState => {
-  let rolename: string;
-  let roledisc: Array<Music> = [];
-
-  for(let val of roles.lists){ 
-    if(val.current){ rolename = val.name; break; }
-  }
-  
-  for(let val of lists.lists){
-    if(val.role === rolename){ roledisc.push(val); }
-  }
-  // console.log(select);
-  return {lists: roledisc}
 }

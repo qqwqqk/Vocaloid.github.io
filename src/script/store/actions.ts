@@ -1,8 +1,8 @@
 import { 
   SetMusic, AddMusic, DelMusic, 
-  SetRole, SetPlay, OnPlay, OffPlay, SetVolume, OnVolume, OffVolume,
+  SetRole, SetPlay, OnPlay, OffPlay,
   SET_MUSIC, ADD_MUSIC, DEL_MUSIC, 
-  SET_ROLE, SET_PLAY, ON_PLAY, OFF_PLAY, SET_VOLUME, ON_VOLUME, OFF_VOLUME
+  SET_ROLE, SET_PLAY, ON_PLAY, OFF_PLAY
 } from "./types";
 
 export function setMusic(key: string): SetMusic{
@@ -52,24 +52,5 @@ export function onPlay(): OnPlay{
 export function offPlay(): OffPlay{
   return {
     type: OFF_PLAY
-  }
-}
-
-export function setVolume(val: number = 60): SetVolume{
-  return {
-    type: SET_VOLUME,
-    value: val
-  }
-}
-
-export function onVolume(): OnVolume{
-  return {
-    type: ON_VOLUME
-  }
-}
-
-export function offVolume(): OffVolume{
-  return {
-    type: OFF_VOLUME
   }
 }

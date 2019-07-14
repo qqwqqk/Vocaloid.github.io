@@ -2,12 +2,12 @@ import * as React from "react";
 import { connect } from "react-redux";
 
 import { MainState } from '../store';
-import { Music, DiscState, RoleState, PlayState, VolumeState } from '../store/types';
+import { Music, DiscState, RoleState, PlayState } from '../store/types';
 import { 
   setRole,
   setMusic, addMusic, delMusic, 
   setPlay, onPlay, offPlay,
-  setVolume, onVolume, offVolume } from '../store/actions';
+} from '../store/actions';
 
 import { Layout, Row, Col, Icon } from 'antd';
 
@@ -23,7 +23,6 @@ interface MainProps {
   discState: DiscState;
   roleState: RoleState;
   playState: PlayState;
-  volumeState: VolumeState;
   setMusic: typeof setMusic;
   addMusic: typeof addMusic;
   delMusic: typeof delMusic;
@@ -31,14 +30,12 @@ interface MainProps {
   setPlay: typeof setPlay;
   onPlay: typeof onPlay;
   offPlay: typeof offPlay;
-  setVolume: typeof setVolume;
-  onVolume: typeof onVolume;
-  offVolume: typeof offVolume;
 }
 
 class Main extends React.Component<MainProps>{
   state = { 
-    progress: 0, 
+    progress: 0,
+    volumestate: { mute: false, value: 60},
     rolediscs:{ lists:[{ key: '', name: '', role: '', current: false, music: '', image: '', lyric: ''}] } 
   };
 
@@ -68,7 +65,7 @@ class Main extends React.Component<MainProps>{
   setMusic = (key: string) => { this.props.setMusic(key); }
   setRole = (name: string) => { 
     this.props.setRole(name);
-    console.log(this.props.discState, this.props.roleState, this.state.rolediscs);
+    // console.log(this.props.discState, this.props.roleState, this.state.rolediscs);
     for(let item of this.props.roleState.lists){
       if(item.current){ document.body.style.setProperty('--theme-color',item.color); break; }
     }
@@ -89,9 +86,10 @@ class Main extends React.Component<MainProps>{
     }
   };
   setVolume = (type: number):void => {
-    if(type < 0){ this.props.offVolume(); return; }
-    if(type > 100){ this.props.onVolume(); return; }
-    this.props.setVolume(type);
+    const value = this.state.volumestate.value;
+    if(type < 0){ this.setState({ volumestate: { mute: true, value: value}}); return; }
+    if(type > 100){ this.setState({ volumestate: { mute: false, value: value}}); return; }
+    this.setState({ volumestate: { mute: false, value: type}}); return;
   };
 
   render(){
@@ -110,7 +108,7 @@ class Main extends React.Component<MainProps>{
               CtrlItem({
                 disclists: this.state.rolediscs.lists,
                 playstate: this.props.playState,
-                volumestate: this.props.volumeState,
+                volumestate: this.state.volumestate,
                 setMusic: this.setMusic,
                 setPlay: this.setPlay,
                 setVolume: this.setVolume
@@ -142,10 +140,9 @@ const mapStateToProps = (state: MainState) =>({
   discState: state.disc,
   roleState: state.role,
   playState: state.play,
-  volumeState: state.volume
 })
 
 export default connect(
   mapStateToProps,
-  { setMusic, addMusic, delMusic, setRole, setPlay, onPlay, offPlay, setVolume, onVolume, offVolume }
+  { setMusic, addMusic, delMusic, setRole, setPlay, onPlay, offPlay }
 )(Main);
