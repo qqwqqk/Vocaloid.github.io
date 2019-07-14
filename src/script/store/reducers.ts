@@ -8,8 +8,8 @@ export const musicInit = (name:string ='', role:string = ''): Music => {
   const key: string = escape( name + role);
   return {
     key: key, name: name, role: role, current: false,
-    music: 'https://qqwqqk.github.io/ResourceRequest.github.io/resource/MPEG3/'+ role +'-'+ name +'.mp3',
-    image: 'https://qqwqqk.github.io/ResourceRequest.github.io/resource/IMG/vocaloid/music/'+ name +'.jpg',
+    music: 'https://qqwqqk.github.io/ResourceRequest.github.io/vocaloid/music/'+ role +'-'+ name +'.mp3',
+    image: 'https://qqwqqk.github.io/ResourceRequest.github.io/vocaloid/image/'+ name +'.jpg',
     lyric: ''
   }
 }
@@ -17,7 +17,7 @@ export const musicInit = (name:string ='', role:string = ''): Music => {
 export const roleInit = (name:string ='', color =''): Role =>{
   return { 
     name: name, color: color, current: false,
-    image: 'https://qqwqqk.github.io/ResourceRequest.github.io/resource/IMG/vocaloid/vsinger/'+ name +'.png'
+    image: 'https://qqwqqk.github.io/ResourceRequest.github.io/vocaloid/vsinger/'+ name +'.png'
   }
 }
 
