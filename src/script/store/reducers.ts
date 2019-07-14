@@ -8,7 +8,7 @@ export const musicInit = (name:string ='', role:string = ''): Music => {
   const key: string = escape( name + role);
   return {
     key: key, name: name, role: role, current: false,
-    music: '',
+    music: 'https://qqwqqk.github.io/ResourceRequest.github.io/resource/MPEG3/'+ role +'-'+ name +'.mp3',
     image: 'https://qqwqqk.github.io/ResourceRequest.github.io/resource/IMG/vocaloid/music/'+ name +'.jpg',
     lyric: ''
   }
