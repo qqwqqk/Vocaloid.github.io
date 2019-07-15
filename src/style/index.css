@@ -139,6 +139,7 @@ body{
 
 .theme .layout-footer .ant-breadcrumb{
   color: var(--black-mask4);
+  padding: 0.5vw;
 }
 
 .theme .layout-footer .ant-breadcrumb > span:last-child{

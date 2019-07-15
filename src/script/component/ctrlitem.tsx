@@ -2,16 +2,19 @@ import * as React from "react";
 import { Row, Col, Slider, Icon, Breadcrumb, Popover } from 'antd';
 import { Music, PlayState } from '../store/types';
 
-interface VolumeState{ mute: boolean; value: number; };
+interface VolumeState{ mute: boolean; value: number; }
+interface MusicInfo{ readyState: number, currentTime: number, duration: number }
 
 interface ShowProps{
   Music: HTMLAudioElement;
+  MusicInfo: MusicInfo;
   disclists: Array<Music>;
   playstate: PlayState;
   volumestate: VolumeState;
   setMusic: (key: string) => void;
   setPlay: (type: string) => void;
   setVolume: (type: number) => void;
+  setProgress: (timestamp: number) => void;
 }
 
 export const CtrlItem = (props: ShowProps) => {
@@ -21,6 +24,7 @@ export const CtrlItem = (props: ShowProps) => {
   }
 
   const toTime = (timestamp: number):string => {
+    if (isNaN(timestamp)) { return '00:00' }
     const integer = Math.trunc(timestamp);
     const min = Math.trunc(integer / 60).toString().padStart(2,'0');
     const sec = Math.trunc(integer % 60).toString().padStart(2,'0');
@@ -73,6 +77,11 @@ export const CtrlItem = (props: ShowProps) => {
     )
   }
 
+  const progressctrl = (value: number)=>{
+    const timestamp = props.MusicInfo.duration * value / 100;
+    props.setProgress(timestamp);
+  }
+
   return (
     <Row type='flex' align='middle' justify='center' className='ctrlmenu'>
       <Col span={2}> { preIcon() } </Col>
@@ -80,13 +89,17 @@ export const CtrlItem = (props: ShowProps) => {
       <Col span={2}> { nextIcon() } </Col>
       <Col span={10}>
         <div className='ctrlslider'>
-          <Slider defaultValue={Math.trunc(100 * props.Music.currentTime / props.Music.duration)} tooltipVisible={false}/>
+          <Slider 
+            value={Math.trunc(100 * props.MusicInfo.currentTime / props.MusicInfo.duration)} 
+            tooltipVisible={false}
+            onChange={ progressctrl }
+          />
         </div>
       </Col>
       <Col span={4}>
         <Breadcrumb> 
-          <Breadcrumb.Item>{toTime(props.Music.currentTime)}</Breadcrumb.Item>
-          <Breadcrumb.Item>{toTime(props.Music.duration)}</Breadcrumb.Item> 
+          <Breadcrumb.Item>{toTime(props.MusicInfo.currentTime)}</Breadcrumb.Item>
+          <Breadcrumb.Item>{toTime(props.MusicInfo.duration)}</Breadcrumb.Item> 
         </Breadcrumb>
       </Col>
       <Col span={2}> { loopIcon() } </Col>

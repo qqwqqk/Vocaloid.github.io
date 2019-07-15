@@ -1,4 +1,14 @@
+import { requestVocaloid } from './axios';
 import { musicInit, discReducer, roleReducer, playReducer } from './reducers';
+
+/* 数据请求测试
+test('request image', async ()=>{
+  expect.hasAssertions();
+  return requestVocaloid().then(data => {
+    expect(data).toBeTruthy();
+  });
+});
+*/
 
 /* 时间转换测试
 const toTime = (timestamp: number):string => {

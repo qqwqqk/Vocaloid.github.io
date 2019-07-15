@@ -37,7 +37,9 @@ class Main extends React.Component<MainProps>{
     isReady: false,
     volumestate: { mute: false, value: 60},
     rolediscs:{ lists:[{ key: '', name: '', role: '', current: false, music: '', image: '', lyric: ''}] },
-    music: document.createElement('audio')
+    music: document.createElement('audio'),
+    musicwatch: setTimeout(() => { }, 0),
+    musicinfo: { readyState: 0, currentTime: 0, duration: 0}
   };
 
   constructor(props:any) {
@@ -59,6 +61,41 @@ class Main extends React.Component<MainProps>{
     return {lists: roledisc}
   }
 
+  musicWatch = ()=>{
+    const readyState = this.state.music.readyState;
+    const currentTime = this.state.music.currentTime;
+    const duration = this.state.music.duration;
+
+    if(readyState === 4){
+      this.state.music.play();
+    } else {
+      this.state.music.pause();
+    }
+
+    if(duration - currentTime < 1){
+      const cachelist = this.state.rolediscs.lists;
+      let currkey: string;
+      let nextkey: string;
+
+      for(let index = 0; index < cachelist.length; index++){
+        if(cachelist[index].current){ 
+          const nextindex = index + 1 < cachelist.length ? index + 1 : index + 1 - cachelist.length;
+          currkey = cachelist[index].key;
+          nextkey = cachelist[nextindex].key;
+          break;
+        }
+      }
+
+      if(this.props.playState.loop === 'single'){
+        this.setMusic(currkey);
+      } else {
+        this.setMusic(nextkey);
+      }
+    }
+
+    this.setState({musicinfo:{readyState, currentTime, duration}});
+  }
+
   setMusic = (key: string) => { 
     this.props.setMusic(key);
     for(let val of this.state.rolediscs.lists){
@@ -66,14 +103,12 @@ class Main extends React.Component<MainProps>{
         this.props.setMusic(val.key);
         this.state.music.src = val.music;
         this.state.music.load();
-        if(this.props.playState.pause){this.state.music.pause();}
-        else{this.state.music.play();}
+        if(this.props.playState.pause){ this.setPlay('off'); }
+        else{ this.setPlay('on'); }
       }
     }
-
   }
   setRole = (name: string) => { 
-    this.setPlay('off');
     this.props.setRole(name);
     // console.log(this.props.discState, this.props.roleState, this.state.rolediscs);
     for(let item of this.props.roleState.lists){
@@ -85,18 +120,22 @@ class Main extends React.Component<MainProps>{
     if(rolediscs.lists.length > 0){
       this.props.setMusic(rolediscs.lists[0].key);
       music.src = rolediscs.lists[0].music;
+      music.volume = this.state.volumestate.value / 100;
     }
-    this.setState({ rolediscs, music });
+    this.setState({ rolediscs, music, musicinfo: { readyState: 0, currentTime: 0, duration: 0 } });
+    this.setPlay('off');
   }
+  
   setPlay = (type: string):void => {
     switch(type){
       case 'on':
-        this.props.onPlay(); 
-        this.state.music.play();
+        this.props.onPlay();
+        this.state.musicwatch = setInterval(() => this.musicWatch(), 60 );
         break;
       case 'off':
         this.props.offPlay();
         this.state.music.pause();
+        clearInterval(this.state.musicwatch);
         break;
       default:
         this.props.setPlay(type); break;
@@ -104,10 +143,26 @@ class Main extends React.Component<MainProps>{
   };
   setVolume = (type: number):void => {
     const value = this.state.volumestate.value;
-    if(type < 0){ this.setState({ volumestate: { mute: true, value: value}}); return; }
-    if(type > 100){ this.setState({ volumestate: { mute: false, value: value}}); return; }
-    this.setState({ volumestate: { mute: false, value: type}}); return;
+    if(type < 0){ 
+      this.setState({ volumestate: { mute: true, value: value}});
+      this.state.music.muted = true;
+      return; 
+    }
+    if(type > 100){ 
+      this.setState({ volumestate: { mute: false, value: value}}); 
+      this.state.music.muted = false;
+      return; 
+    }
+    this.setState({ volumestate: { mute: false, value: type}});
+    this.state.music.muted = false;
+    this.state.music.volume = type / 100;
+    return;
   };
+  setProgress = (timestamp: number): void=>{
+    if(!this.state.music.paused){
+      this.state.music.currentTime = timestamp;
+    }
+  }
 
   render(){
     if(this.state.isReady){
@@ -124,12 +179,14 @@ class Main extends React.Component<MainProps>{
             { 
               CtrlItem({
                 Music: this.state.music,
+                MusicInfo: this.state.musicinfo,
                 disclists: this.state.rolediscs.lists,
                 playstate: this.props.playState,
                 volumestate: this.state.volumestate,
                 setMusic: this.setMusic,
                 setPlay: this.setPlay,
-                setVolume: this.setVolume
+                setVolume: this.setVolume,
+                setProgress: this.setProgress
               }) 
             }
           </Footer>
