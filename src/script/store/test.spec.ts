@@ -1,13 +1,22 @@
-import { requestVocaloid } from './axios';
+import { requestVocaloid, requestLyrics } from './axios';
 import { musicInit, discReducer, roleReducer, playReducer } from './reducers';
 
 /* 数据请求测试
-test('request image', async ()=>{
+test('request vocaloid', async ()=>{
   expect.hasAssertions();
   return requestVocaloid().then(data => {
     expect(data).toBeTruthy();
   });
 });
+
+test('request lyric', async ()=>{
+  const url = encodeURI('https://qqwqqk.github.io/ResourceRequest.github.io/vocaloid/lyric/洛阳怀.lrc');
+  expect.hasAssertions();
+  return requestLyrics(url).then(data => {
+    expect(data).toBeTruthy();
+  });
+});
+
 */
 
 /* 时间转换测试

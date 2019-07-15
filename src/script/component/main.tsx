@@ -2,9 +2,10 @@ import * as React from "react";
 import { connect } from "react-redux";
 
 import { MainState } from '../store';
+import { requestVocaloid, requestLyrics } from '../store/axios';
 import { Music, DiscState, RoleState, PlayState } from '../store/types';
 import { 
-  setRole,
+  setRole, addRole, delRole,
   setMusic, addMusic, delMusic, 
   setPlay, onPlay, offPlay,
 } from '../store/actions';
@@ -27,6 +28,8 @@ interface MainProps {
   addMusic: typeof addMusic;
   delMusic: typeof delMusic;
   setRole: typeof setRole;
+  addRole: typeof addRole;
+  delRole: typeof delRole;
   setPlay: typeof setPlay;
   onPlay: typeof onPlay;
   offPlay: typeof offPlay;
@@ -45,12 +48,23 @@ class Main extends React.Component<MainProps>{
   constructor(props:any) {
     super(props);
     // console.log("main window loading");
-    setTimeout(()=>{
+
+    requestVocaloid().then(data => {
+      const roles = data.roles;
+      const musics = data.musics;
+
+      for(let item of roles){
+        this.props.addRole(item.name, item.color);
+      }
+      for(let item of musics){
+        this.props.addMusic(item.name, item.role);
+      }
+
       if(this.props.roleState.lists.length > 0){
         this.setRole(this.props.roleState.lists[0].name);
       }
       this.setState({ isReady: true });
-    }, 0);
+    })
   }
 
   getRoleDisc = ( lists = this.props.discState, roles = this.props.roleState ): DiscState => {
@@ -219,5 +233,5 @@ const mapStateToProps = (state: MainState) =>({
 
 export default connect(
   mapStateToProps,
-  { setMusic, addMusic, delMusic, setRole, setPlay, onPlay, offPlay }
+  { setMusic, addMusic, delMusic, setRole, addRole, delRole, setPlay, onPlay, offPlay }
 )(Main);

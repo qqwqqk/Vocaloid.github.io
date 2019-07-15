@@ -114,6 +114,7 @@ body{
   border: 2px outset var(--black-mask4);
   margin: auto;
   border-radius: 17px;
+  overflow: hidden;
 }
 
 .theme .layout-content .ant-list .ant-list-item .current{

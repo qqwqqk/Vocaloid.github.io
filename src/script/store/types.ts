@@ -31,7 +31,11 @@ export interface PlayState{
 export const SET_MUSIC = "SET_MUSIC";
 export const ADD_MUSIC = "ADD_MUSIC";
 export const DEL_MUSIC = "DEL_MUSIC";
+
 export const SET_ROLE = "SET_ROLE";
+export const ADD_ROLE = "ADD_ROLE";
+export const DEL_ROLE = "DEL_ROLE";
+
 export const SET_PLAY = "SET_PLAY";
 export const ON_PLAY = "ON_PLAY";
 export const OFF_PLAY = "OFF_PLAY";
@@ -59,6 +63,19 @@ export interface SetRole{
   name: string;
 }
 
+export interface AddRole{
+  type: typeof ADD_ROLE;
+  meta: {
+    name: string;
+    color: string;
+  }
+}
+
+export interface DelRole{
+  type: typeof DEL_ROLE;
+  name: string;
+}
+
 export interface SetPlay{
   type: typeof SET_PLAY;
   loop: string;
@@ -73,5 +90,5 @@ export interface OffPlay{
 }
 
 export type MusicActionType = SetMusic | AddMusic | DelMusic;
-export type RoleActionType = SetRole;
+export type RoleActionType = SetRole | AddRole | DelRole;
 export type PlayActionType = SetPlay | OnPlay | OffPlay;
