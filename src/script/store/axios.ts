@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const timeOut = (time: number = 2 ): number => { return 1000 * time };
+const timeOut = (time: number = 10 ): number => { return 1000 * time };
 
 export async function requestVocaloid(){
   let url: string = 'https://qqwqqk.github.io/ResourceRequest.github.io/vocaloid/Interface.json'
@@ -21,12 +21,14 @@ export async function requestVocaloid(){
 }
   
 export async function requestLyrics(url: string){
+  const URI:string = encodeURI(url);
   return axios({
     method: 'get',
-    url: url,
+    url: URI,
     responseType: 'text',
     timeout: timeOut()
   }).then((res) => { 
+    // console.log(res);
     return res.data; 
   }).then((data)=>{ 
     // console.log(data);

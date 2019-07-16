@@ -1,7 +1,9 @@
 import { requestVocaloid, requestLyrics } from './axios';
 import { musicInit, discReducer, roleReducer, playReducer } from './reducers';
 
+
 /* 数据请求测试
+
 test('request vocaloid', async ()=>{
   expect.hasAssertions();
   return requestVocaloid().then(data => {
@@ -10,7 +12,7 @@ test('request vocaloid', async ()=>{
 });
 
 test('request lyric', async ()=>{
-  const url = encodeURI('https://qqwqqk.github.io/ResourceRequest.github.io/vocaloid/lyric/洛阳怀.lrc');
+  const url = 'https://qqwqqk.github.io/ResourceRequest.github.io/vocaloid/lyric/洛阳怀.lrc';
   expect.hasAssertions();
   return requestLyrics(url).then(data => {
     expect(data).toBeTruthy();

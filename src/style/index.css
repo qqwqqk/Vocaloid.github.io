@@ -77,13 +77,24 @@ body{
 
 .theme .layout-content .discshow{
   margin: 5% 0;
-  padding: 0 20px;
   height: 30vw;
   min-height: 320px;
   min-width: 150px;
   overflow: hidden;
-  border-radius: 20px;
+  border-radius: 30px;
   border: 10px solid transparent;
+}
+
+.theme .layout-content .discshow .brakgroundimage{
+  position: absolute;
+  width: 100%;
+}
+
+.theme .layout-content .discshow .lyricshow{
+  position: absolute;
+  width: 100%;
+  bottom: 40px;
+  text-align: center;
 }
 
 .theme .layout-content .disclist{

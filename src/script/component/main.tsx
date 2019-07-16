@@ -42,7 +42,8 @@ class Main extends React.Component<MainProps>{
     rolediscs:{ lists:[{ key: '', name: '', role: '', current: false, music: '', image: '', lyric: ''}] },
     music: document.createElement('audio'),
     musicwatch: setTimeout(() => { }, 0),
-    musicinfo: { readyState: 0, currentTime: 0, duration: 0}
+    musicinfo: { readyState: 0, currentTime: 0, duration: 0},
+    musiclyric: { loading: true, lrc:[{timestamp: 0, content: ''}]}
   };
 
   constructor(props:any) {
@@ -65,7 +66,7 @@ class Main extends React.Component<MainProps>{
       }
       this.setState({ isReady: true });
     })
-  }
+  };
 
   getRoleDisc = ( lists = this.props.discState, roles = this.props.roleState ): DiscState => {
     let rolename: string;
@@ -73,7 +74,7 @@ class Main extends React.Component<MainProps>{
     for(let val of roles.lists){ if(val.current){ rolename = val.name; break; } }
     for(let val of lists.lists){ if(val.role === rolename){ roledisc.push(val); } }
     return {lists: roledisc}
-  }
+  };
 
   musicWatch = ()=>{
     const readyState = this.state.music.readyState;
@@ -108,20 +109,22 @@ class Main extends React.Component<MainProps>{
     }
 
     this.setState({musicinfo:{readyState, currentTime, duration}});
-  }
+  };
 
   setMusic = (key: string) => { 
     this.props.setMusic(key);
     for(let val of this.state.rolediscs.lists){
       if(val.current){
+        this.setLyrics(val.lyric);
         this.props.setMusic(val.key);
+        this.state.music.volume = this.state.volumestate.value / 100;
         this.state.music.src = val.music;
         this.state.music.load();
         if(this.props.playState.pause){ this.setPlay('off'); }
         else{ this.setPlay('on'); }
       }
     }
-  }
+  };
   setRole = (name: string) => { 
     this.props.setRole(name);
     // console.log(this.props.discState, this.props.roleState, this.state.rolediscs);
@@ -130,16 +133,13 @@ class Main extends React.Component<MainProps>{
     }
 
     const rolediscs = this.getRoleDisc();
-    const music = document.createElement('audio');
     if(rolediscs.lists.length > 0){
       this.props.setMusic(rolediscs.lists[0].key);
-      music.src = rolediscs.lists[0].music;
-      music.volume = this.state.volumestate.value / 100;
+      this.setLyrics(rolediscs.lists[0].lyric);
     }
-    this.setState({ rolediscs, music, musicinfo: { readyState: 0, currentTime: 0, duration: 0 } });
+    this.setState({ rolediscs, musicinfo: { readyState: 0, currentTime: 0, duration: 0 } });
     this.setPlay('off');
-  }
-  
+  };
   setPlay = (type: string):void => {
     switch(type){
       case 'on':
@@ -176,6 +176,30 @@ class Main extends React.Component<MainProps>{
     if(!this.state.music.paused){
       this.state.music.currentTime = timestamp;
     }
+  };
+  setLyrics = (url: string): void=>{
+    this.setState({ musiclyric: { loading: true, lrc:[{timestamp: 0, content: ''}]}});
+    requestLyrics(url).then(data=>{
+      if(data){
+        console.log(data);
+        let lyricsCache = [];
+        let arrayList = data.split('\n');
+        for(let row of arrayList){
+            row = row.replace('[','');
+            let cache = row.split(']');
+            let cache_time = cache[0].split(':');
+            let lyricsTime = (Number.parseFloat(cache_time[0]) * 60 + Number.parseFloat(cache_time[1])).toFixed(2);
+            let lyricsText = cache[1].replace('\r','');
+            //console.log(lyricsTime + ' - ' + lyricsText);
+            lyricsCache.push({'timestamp':lyricsTime , 'content':lyricsText});
+        }
+        //console.log(lyricsCache);
+        this.setState({ musiclyric: { loading: false, lrc: lyricsCache }});
+      } else {
+        this.setState({ musiclyric: { loading: false, lrc:[{timestamp: 0, content: ''}] }});
+      }
+      
+    })
   }
 
   render(){
@@ -184,10 +208,23 @@ class Main extends React.Component<MainProps>{
       return (
         <Layout className="theme">
           <Header className='layout-header'>
-            { InfoItem({disclists: this.state.rolediscs.lists, rolelists: this.props.roleState.lists, setRole: this.setRole}) }
+            { 
+              InfoItem({
+                disclists: this.state.rolediscs.lists, 
+                rolelists: this.props.roleState.lists, 
+                setRole: this.setRole
+              }) 
+            }
           </Header>
           <Content className='layout-content'>      
-            { ShowItem({disclists: this.state.rolediscs.lists, setMusic: this.setMusic}) }
+            { 
+              ShowItem({
+                disclists: this.state.rolediscs.lists, 
+                lyrics: this.state.musiclyric, 
+                current:this.state.musicinfo.currentTime, 
+                setMusic: this.setMusic
+              }) 
+            }
           </Content>
           <Footer className='layout-footer'>
             { 
@@ -222,14 +259,14 @@ class Main extends React.Component<MainProps>{
         </Layout>
       )
     }
-  }
+  };
 }
 
-const mapStateToProps = (state: MainState) =>({
+const mapStateToProps = (state: MainState) => ({
   discState: state.disc,
   roleState: state.role,
   playState: state.play,
-})
+});
 
 export default connect(
   mapStateToProps,
