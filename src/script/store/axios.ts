@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const timeOut = (time: number = 10 ): number => { return 1000 * time };
+const timeOut = (time: number = 2 ): number => { return 1000 * time };
 
 export async function requestVocaloid(){
   let url: string = 'https://qqwqqk.github.io/ResourceRequest.github.io/vocaloid/Interface.json'

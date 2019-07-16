@@ -41,7 +41,6 @@ class Main extends React.Component<MainProps>{
     volumestate: { mute: false, value: 60},
     rolediscs:{ lists:[{ key: '', name: '', role: '', current: false, music: '', image: '', lyric: ''}] },
     music: document.createElement('audio'),
-    musicwatch: setTimeout(() => { }, 0),
     musicinfo: { readyState: 0, currentTime: 0, duration: 0},
     musiclyric: { loading: true, lrc:[{timestamp: 0, content: ''}]}
   };
@@ -53,6 +52,7 @@ class Main extends React.Component<MainProps>{
     requestVocaloid().then(data => {
       const roles = data.roles;
       const musics = data.musics;
+      const musicwatch = setInterval(() => this.musicWatch(), 60 );
 
       for(let item of roles){
         this.props.addRole(item.name, item.color);
@@ -64,7 +64,7 @@ class Main extends React.Component<MainProps>{
       if(this.props.roleState.lists.length > 0){
         this.setRole(this.props.roleState.lists[0].name);
       }
-      this.setState({ isReady: true });
+      this.setState({ musicwatch, isReady: true });
     })
   };
 
@@ -81,7 +81,7 @@ class Main extends React.Component<MainProps>{
     const currentTime = this.state.music.currentTime;
     const duration = this.state.music.duration;
 
-    if(readyState === 4){
+    if(readyState === 4 && !this.props.playState.pause){
       this.state.music.play();
     } else {
       this.state.music.pause();
@@ -111,13 +111,35 @@ class Main extends React.Component<MainProps>{
     this.setState({musicinfo:{readyState, currentTime, duration}});
   };
 
+  setRole = (name: string) => { 
+    this.setPlay('off');
+    this.state.music.pause();
+    this.props.setRole(name);
+    // console.log(this.props.discState, this.props.roleState, this.state.rolediscs);
+    for(let item of this.props.roleState.lists){
+      if(item.current){ document.body.style.setProperty('--theme-color',item.color); break; }
+    }
+
+    const music = document.createElement('audio');
+    let musicItem: Music;
+
+    const rolediscs = this.getRoleDisc();
+    if(rolediscs.lists.length > 0){ musicItem = rolediscs.lists[0];}
+
+    this.setMusic(musicItem.key);
+    this.setLyrics(musicItem.lyric);
+    music.volume = this.state.volumestate.value / 100;
+    music.src = musicItem.music;
+    music.load();
+
+    this.setState({ rolediscs, music, musicinfo: { readyState: 0, currentTime: 0, duration: 0 } });
+  };
+
   setMusic = (key: string) => { 
     this.props.setMusic(key);
     for(let val of this.state.rolediscs.lists){
-      if(val.current){
+      if(val.key === key){
         this.setLyrics(val.lyric);
-        this.props.setMusic(val.key);
-        this.state.music.volume = this.state.volumestate.value / 100;
         this.state.music.src = val.music;
         this.state.music.load();
         if(this.props.playState.pause){ this.setPlay('off'); }
@@ -125,31 +147,14 @@ class Main extends React.Component<MainProps>{
       }
     }
   };
-  setRole = (name: string) => { 
-    this.props.setRole(name);
-    // console.log(this.props.discState, this.props.roleState, this.state.rolediscs);
-    for(let item of this.props.roleState.lists){
-      if(item.current){ document.body.style.setProperty('--theme-color',item.color); break; }
-    }
-
-    const rolediscs = this.getRoleDisc();
-    if(rolediscs.lists.length > 0){
-      this.props.setMusic(rolediscs.lists[0].key);
-      this.setLyrics(rolediscs.lists[0].lyric);
-    }
-    this.setState({ rolediscs, musicinfo: { readyState: 0, currentTime: 0, duration: 0 } });
-    this.setPlay('off');
-  };
+  
   setPlay = (type: string):void => {
     switch(type){
       case 'on':
         this.props.onPlay();
-        this.state.musicwatch = setInterval(() => this.musicWatch(), 60 );
         break;
       case 'off':
         this.props.offPlay();
-        this.state.music.pause();
-        clearInterval(this.state.musicwatch);
         break;
       default:
         this.props.setPlay(type); break;
@@ -181,19 +186,20 @@ class Main extends React.Component<MainProps>{
     this.setState({ musiclyric: { loading: true, lrc:[{timestamp: 0, content: ''}]}});
     requestLyrics(url).then(data=>{
       if(data){
-        console.log(data);
+        // console.log(data);
         let lyricsCache = [];
-        let arrayList = data.split('\n');
+        let splitList = data.split('\n');
+        let arrayList = splitList.map((val: string) => { if(val !== '') return val;} )
         for(let row of arrayList){
             row = row.replace('[','');
             let cache = row.split(']');
             let cache_time = cache[0].split(':');
-            let lyricsTime = (Number.parseFloat(cache_time[0]) * 60 + Number.parseFloat(cache_time[1])).toFixed(2);
+            let lyricsTime = (Number.parseFloat(cache_time[0]) * 60 + Number.parseFloat(cache_time[1]));
             let lyricsText = cache[1].replace('\r','');
             //console.log(lyricsTime + ' - ' + lyricsText);
             lyricsCache.push({'timestamp':lyricsTime , 'content':lyricsText});
         }
-        //console.log(lyricsCache);
+        // console.log(lyricsCache);
         this.setState({ musiclyric: { loading: false, lrc: lyricsCache }});
       } else {
         this.setState({ musiclyric: { loading: false, lrc:[{timestamp: 0, content: ''}] }});

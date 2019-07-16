@@ -1,0 +1,19 @@
+/* error.css */
+html {
+    box-sizing: border-box;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    background-color: white;
+    margin: 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.h{ width: 800px; height: 80px; margin: auto; line-height: 80px; color: black;}
+.d{ width: 800px; height: 80px; margin: auto; line-height: 80px; color: black;}

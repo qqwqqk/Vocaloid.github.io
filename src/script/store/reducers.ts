@@ -24,20 +24,11 @@ export const roleInit = (name:string ='', color =''): Role =>{
 }
 
 const listState: DiscState = {
-  lists: [
-    musicInit('ワールドイズマイン','初音ミク'), musicInit('千本桜','初音ミク'), 
-    musicInit('恋は戦争','初音ミク'), musicInit('嘘つきのパレード','初音ミク'), 
-    musicInit('易水诀','乐正绫'), musicInit('霜雪千年','乐正绫'), 
-    musicInit('三千烛华夜','乐正绫'), musicInit('世末歌者','乐正绫'), 
-    musicInit('眉间不点砂','洛天依'), musicInit('小城书院','洛天依'), 
-    musicInit('洛阳怀','洛天依'), musicInit('八辈子','洛天依'), 
-  ]
+  lists: [ ]
 };
 
 const roleState: RoleState = { 
-  lists: [
-    roleInit('初音ミク','#39C5BB'),roleInit('乐正绫','#EE0000'),roleInit('洛天依','#66CCFF')
-  ]
+  lists: [ ]
 };
 const playState: PlayState = { pause: true, loop: 'single' };
 

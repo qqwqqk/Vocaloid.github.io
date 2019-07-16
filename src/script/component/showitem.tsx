@@ -27,9 +27,33 @@ export const ShowItem = (props: ShowProps) => {
 
   const lyricShow = ()=>{
     if(!props.lyrics.loading){
-      return (<div>show</div>)
+      let keytime = 0;
+      let isempty = true;
+      let showcontent: Array<string> = [];
+      for(let item of props.lyrics.lrc){
+        if(item.timestamp > props.current){ break;}
+        else{ keytime = item.timestamp; }
+      }
+
+      for(let item of props.lyrics.lrc){
+        if(Math.abs(item.timestamp - keytime) < Number.EPSILON * Math.pow(2,2) && showcontent.length < 2){
+          if(item.content !== ''){ isempty = false; }
+          showcontent.push(item.content);
+        }
+      }
+
+      return (
+        <List 
+          itemLayout="vertical"
+          dataSource={showcontent}
+          className={ isempty? 'showempty': 'showcontent' }
+          renderItem={(item, index) => (
+            <List.Item key={index} className='lyricitem'> <span >{item}</span> </List.Item>
+          )}
+        />
+      )
     } else {
-      return (<div>loading</div>)
+      return (<div></div>)
     }
 
   }
