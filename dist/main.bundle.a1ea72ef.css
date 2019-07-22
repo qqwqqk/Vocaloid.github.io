@@ -23695,6 +23695,11 @@ body{
   border: solid 2px var(--white-mask3);
 }
 
+.ctrlslider .ant-slider:hover .ant-slider-handle{
+  background-color: var(--theme-color);
+  border: solid 2px var(--white-mask3);
+}
+
 .ctrlslider .ant-slider .ant-slider-handle:focus {
   border-color: var(--white-mask4);
   outline: none;
